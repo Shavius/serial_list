@@ -1,0 +1,15 @@
+.header {
+	border: 1px solid $secondary-color2;
+
+	&__title {
+		border: 1px solid $secondary-color2;
+		font-size: 20px;
+		margin: 10px;
+	}
+
+	&__content {
+		border: 1px solid $secondary-color2;
+		font-size: 20px;
+		margin: 5px;
+	}
+}
