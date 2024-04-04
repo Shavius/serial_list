@@ -52,18 +52,13 @@
 	justify-content: center;
 
 	&__item {
-		border: 1px solid black;
+		@include ButtonBG();
 		border-radius: 5px;
-		background-color: silver;
 		padding: 5px 25px;
 		margin-right: 10px;
-		cursor: pointer;
-		user-select: none;
-		transition: background-color 0.2s;
 
 		&:active {
-			background-color: $ColorClick;
-			transition: background-color 0.2s;
+			@include ButtonClickBG();
 		}
 
 		&:last-child {
@@ -85,18 +80,13 @@
 	text-align: right;
 
 	&__item {
+		@include ButtonBG();
 		display: inline-block;
-		border: 1px solid black;
-		background-color: silver;
 		border-radius: 5px;
 		padding: 2px 4px;
-		cursor: pointer;
-		user-select: none;
-		transition: background-color 0.2s;
 
 		&:active {
-			background-color: $ColorClick;
-			transition: background-color 0.2s;
+			@include ButtonClickBG();
 		}
 	}
 }

@@ -13,20 +13,26 @@
 	}
 
 	&__authorization {
-		border: 1px solid black;
+		@include ButtonBG();
 		border-radius: 5px;
 		padding: 5px 0;
-		cursor: pointer;
 		width: $ButtonWidthSize;
 		text-align: center;
+
+		&:active {
+			@include ButtonClickBG();
+		}
 	}
 
 	&__create-serial {
-		border: 1px solid black;
+		@include ButtonBG();
 		border-radius: 5px;
 		padding: 5px 0;
-		cursor: pointer;
 		width: $ButtonWidthSize;
 		text-align: center;
+
+		&:active {
+			@include ButtonClickBG();
+		}
 	}
 }

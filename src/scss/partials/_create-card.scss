@@ -19,26 +19,20 @@
 	position: relative;
 	top: 0;
 	left: 0;
-	border: 1px solid black;
 	background-color: $ColorBackgroundSigment;
 	max-width: $PageWidth;
 	margin: 0 auto;
 
 	&__exit {
+		@include ButtonBG();
 		display: inline-block;
-		border: 1px solid black;
 		padding: 5px;
-		cursor: pointer;
-		user-select: none;
-		background-color: silver;
-		transition: background-color 0.2s;
 		position: absolute;
 		top: 5px;
 		right: 5px;
 
 		&:active {
-			background-color: $ColorClick;
-			transition: background-color 0.2s;
+			@include ButtonClickBG();
 		}
 	}
 
@@ -76,18 +70,13 @@
 	margin-bottom: 10px;
 
 	&__item {
+		@include ButtonBG();
 		display: inline-block;
-		border: 1px solid black;
-		cursor: pointer;
-		user-select: none;
-		background-color: silver;
-		transition: background-color 0.2s;
 		padding: 5px 10px;
 		margin-right: 10px;
 
 		&:active {
-			background-color: $ColorClick;
-			transition: background-color 0.2s;
+			@include ButtonClickBG();
 		}
 
 		&:last-child {
