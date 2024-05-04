@@ -19,11 +19,11 @@ export default class CreateFormCard {
 				<div class="create-card__title">Створення картки</div>
 				<div class="create-card__inputs create-card-input">
 					<div class="create-card-input__item-text">Додати назву</div>
-					<input id="inputCardName" class="create-card-input__item-text-input" type="text" />
+					<input id="inputCardName" class="create-card-input__item-text-input" type="text" value="Назва Серіала" />
 					<div class="create-card-input__item-text">Поточна серія</div>
-					<input id="inputCardCurrentSeria" class="create-card-input__item-text-input" type="text" />
+					<input id="inputCardCurrentSeria" class="create-card-input__item-text-input" type="number" value="0" />
 					<div class="create-card-input__item-text">Всього серій</div>
-					<input id="inputCardAllSeria" class="create-card-input__item-text-input" type="text" />
+					<input id="inputCardAllSeria" class="create-card-input__item-text-input" type="number" value="0" />
 					<div class="create-card-input__item-text">Додати зображення</div>
 					<input id="inputCardImage" class="create-card-input__item-text-input" type="text" />
 				</div>
