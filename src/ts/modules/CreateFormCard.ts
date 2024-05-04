@@ -94,18 +94,25 @@ export default class CreateFormCard {
 							inputCardAllSeria !== null &&
 							inputCardImage !== null
 						) {
-							const cardInfo = {
-								cardName: inputCardName.value,
-								cardCurrentSeria: inputCardCurrentSeria.value,
-								cardAllSeria: inputCardAllSeria.value,
-								cardImg: inputCardImage.value,
-								dateCreate: this.getCurrentDate(),
-								dateUpdate: this.getCurrentDate(),
-							};
+							const inputCurrentSeria = Number(+inputCardCurrentSeria.value);
+							const inputAlltSeria = Number(+inputCardAllSeria.value);
 
-							console.table(cardInfo);
+							if (inputCurrentSeria >= 0 && inputAlltSeria >= 0) {
+								const cardInfo = {
+									cardName: inputCardName.value,
+									cardCurrentSeria: inputCurrentSeria,
+									cardAllSeria: inputAlltSeria,
+									cardImg: inputCardImage.value,
+									dateCreate: this.getCurrentDate(),
+									dateUpdate: this.getCurrentDate(),
+								};
 
-							this.closeCard(this.pageBody, card, wrap);
+								console.table(cardInfo);
+
+								this.closeCard(this.pageBody, card, wrap);
+							} else {
+								console.log("Серии не чесла и не равны 0");
+							}
 						}
 					});
 				}
