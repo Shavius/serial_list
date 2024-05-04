@@ -1,5 +1,7 @@
 /* eslint-disable class-methods-use-this */
 
+import ParseCard from "./ParseCard";
+
 export default class CreateFormCard {
 	pageBody: HTMLElement | null;
 	buttonCreate: HTMLElement | null;
@@ -110,6 +112,9 @@ export default class CreateFormCard {
 								console.table(cardInfo);
 
 								this.closeCard(this.pageBody, card, wrap);
+
+								const parseCard = new ParseCard(cardInfo);
+								parseCard.parseOneCard();
 							} else {
 								console.log("Серии не чесла и не равны 0");
 							}
