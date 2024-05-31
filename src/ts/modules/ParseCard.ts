@@ -43,12 +43,12 @@ export default class ParseCard {
             </div>
         </div>
         <div class="card-buttons">
-            <div class="card-buttons__item">+</div>
-            <div class="card-buttons__item">-</div>
+            <div class="card-buttons__item card-buttons__item-up">+</div>
+            <div class="card-buttons__item card-buttons__item-down">-</div>
         </div>
         <div class="card-date">
-            <div class="card-date__item">Створенно: <span>${this.oneCard.dateCreate}</span></div>
-            <div class="card-date__item">Оновленно: <span>${this.oneCard.dateUpdate}</span></div>
+            <div class="card-date__item card-date__item-create">Створенно: <span>${this.oneCard.dateCreate}</span></div>
+            <div class="card-date__item card-date__item-update">Оновленно: <span>${this.oneCard.dateUpdate}</span></div>
         </div>
         `;
 
