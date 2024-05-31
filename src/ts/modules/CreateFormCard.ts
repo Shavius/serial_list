@@ -1,5 +1,6 @@
 /* eslint-disable class-methods-use-this */
 
+import DateControl from "./DateControl";
 import ParseCard from "./ParseCard";
 
 export default class CreateFormCard {
@@ -54,12 +55,6 @@ export default class CreateFormCard {
 		}
 	}
 
-	getCurrentDate(): string {
-		const currentDate = new Date();
-		const dateA = currentDate.toLocaleDateString("ua-UA", { day: "numeric", month: "numeric", year: "numeric" });
-		return dateA;
-	}
-
 	activate(): void {
 		if (this.pageBody !== null && this.buttonCreate != null) {
 			this.buttonCreate.addEventListener("click", () => {
@@ -105,11 +100,9 @@ export default class CreateFormCard {
 									cardCurrentSeria: inputCurrentSeria,
 									cardAllSeria: inputAlltSeria,
 									cardImg: inputCardImage.value,
-									dateCreate: this.getCurrentDate(),
-									dateUpdate: this.getCurrentDate(),
+									dateCreate: new DateControl().getCurrentDate(),
+									dateUpdate: new DateControl().getCurrentDate(),
 								};
-
-								console.table(cardInfo);
 
 								this.closeCard(this.pageBody, card, wrap);
 
