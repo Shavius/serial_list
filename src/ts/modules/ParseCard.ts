@@ -29,6 +29,8 @@ export default class ParseCard {
 
 		card.innerHTML = `
         <div class="serial-card__top-buttons top-buttons">
+			<div class="top-buttons__item serial-card__button-up">Вгору</div>
+			<div class="top-buttons__item serial-card__button-down">Вниз</div>
             <div class="top-buttons__item serial-card__button-delete">Видалити</div>
         </div>
         <div class="serial-card__container">
