@@ -13,4 +13,4 @@ const createCard = new CreateFormCard(pageBody, pageButtonCreateSerial);
 createCard.activate();
 
 const cardcontrolButtons = new CardControlButtons(mainContent);
-cardcontrolButtons.updateSeria();
+cardcontrolButtons.update();
