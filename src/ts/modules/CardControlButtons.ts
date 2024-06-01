@@ -1,5 +1,6 @@
 import CardUpdate from "./CardUpdate";
 import CardMover from "./CardMover";
+import CardDelete from "./CardDelete";
 
 export default class CardControlButtons {
 	mainContentElement: HTMLElement | null;
@@ -46,6 +47,15 @@ export default class CardControlButtons {
 
 					if (cardElement !== null) {
 						new CardMover(cardElement).moveDown();
+					}
+				}
+
+				if (pageElement.classList.contains("serial-card__button-delete")) {
+					const clickedButton = event.target as HTMLElement;
+					const cardElement = clickedButton.closest<HTMLElement>(".serial-card");
+
+					if (cardElement !== null) {
+						new CardDelete(cardElement).init();
 					}
 				}
 			});
