@@ -1,28 +1,25 @@
 /* eslint-disable class-methods-use-this */
 
-interface IOneCard {
-	cardName: string;
-	cardCurrentSeria: number;
-	cardAllSeria: number;
-	cardImg: string;
-	dateCreate: string;
-	dateUpdate: string;
-}
+import type IDataCard from "../interfaces/IDataCard";
 
 export default class ParseCard {
 	pageMainContent: HTMLElement | null;
-	oneCard: IOneCard;
+	dataCard: IDataCard;
 
-	constructor(oneCard: IOneCard) {
+	constructor(dataCard: IDataCard) {
 		this.pageMainContent = document.querySelector(".main__content");
-		this.oneCard = oneCard;
+		this.dataCard = dataCard;
 	}
 
 	createCard(): HTMLElement {
-		const name = this.oneCard.cardName;
-		const img = this.oneCard.cardImg;
-		const currentSeria = this.oneCard.cardCurrentSeria;
-		const allSeria = this.oneCard.cardAllSeria;
+		let name = this.dataCard.serialName.trim();
+		if (name === undefined || name === "undefined" || name === "") {
+			name = "No Name";
+		}
+
+		const img = this.dataCard.cardImg;
+		const currentSeriaNumber = Number(this.dataCard.currentSeria);
+		const allSeriaNumber = Number(this.dataCard.allSeria);
 
 		const card = document.createElement("div");
 		card.classList.add("serial-card");
@@ -31,6 +28,7 @@ export default class ParseCard {
         <div class="serial-card__top-buttons top-buttons">
 			<div class="top-buttons__item serial-card__button-up">Вгору</div>
 			<div class="top-buttons__item serial-card__button-down">Вниз</div>
+			<div class="top-buttons__item serial-card__button-change">Змінити</div>
             <div class="top-buttons__item serial-card__button-delete">Видалити</div>
         </div>
         <div class="serial-card__container">
@@ -39,7 +37,7 @@ export default class ParseCard {
                 <div class="serial-card__title">${name}</div>
                 <div class="serial-card__serial-info serial-info">
                     <div class="serial-info__item serial-info__number-current">
-                        Поточна серія: <span>${currentSeria}</span>
+                        Поточна серія: <span>${currentSeriaNumber}</span>
                     </div>
                 </div>
             </div>
@@ -49,8 +47,8 @@ export default class ParseCard {
             <div class="card-buttons__item card-buttons__item-down">-</div>
         </div>
         <div class="card-date">
-            <div class="card-date__item card-date__item-create">Створенно: <span>${this.oneCard.dateCreate}</span></div>
-            <div class="card-date__item card-date__item-update">Оновленно: <span>${this.oneCard.dateUpdate}</span></div>
+            <div class="card-date__item card-date__item-create">Створенно: <span>${this.dataCard.createDate}</span></div>
+            <div class="card-date__item card-date__item-update">Оновленно: <span>${this.dataCard.updateDate}</span></div>
         </div>
         `;
 
@@ -67,16 +65,16 @@ export default class ParseCard {
 			}
 		}
 
-		if (allSeria !== 0 && allSeria >= currentSeria) {
+		if (allSeriaNumber !== 0 && allSeriaNumber >= currentSeriaNumber) {
 			const serialInfoElement = card.querySelector(".serial-card__serial-info");
 			if (serialInfoElement !== null) {
 				const allSeriaElement = document.createElement("div");
 				allSeriaElement.className = "serial-info__item serial-info__number-all";
-				allSeriaElement.innerHTML = `Всього серій: <span>${allSeria}</span>`;
+				allSeriaElement.innerHTML = `Всього серій: <span>${allSeriaNumber}</span>`;
 
 				const leftSeriaElement = document.createElement("div");
 				leftSeriaElement.className = "serial-info__item serial-info__number-left";
-				leftSeriaElement.innerHTML = `Залишилось сериій: <span>${allSeria - currentSeria}</span>`;
+				leftSeriaElement.innerHTML = `Залишилось сериій: <span>${allSeriaNumber - currentSeriaNumber}</span>`;
 
 				serialInfoElement.append(allSeriaElement);
 				serialInfoElement.append(leftSeriaElement);
@@ -89,6 +87,13 @@ export default class ParseCard {
 	parseOneCard(): void {
 		if (this.pageMainContent !== null) {
 			this.pageMainContent.append(this.createCard());
+		}
+	}
+
+	changeOneCard(cardElement: HTMLElement | null): void {
+		if (this.pageMainContent !== null && cardElement !== null) {
+			cardElement.after(this.createCard());
+			cardElement.remove();
 		}
 	}
 }

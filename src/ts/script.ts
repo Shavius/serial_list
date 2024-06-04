@@ -10,7 +10,7 @@ const pageButtonCreateSerial: HTMLElement | null = document.querySelector(".head
 const mainContent: HTMLElement | null = document.querySelector(".main__content");
 
 const createCard = new CreateFormCard(pageBody, pageButtonCreateSerial);
-createCard.activate();
+createCard.buttonInit();
 
-const cardcontrolButtons = new CardControlButtons(mainContent);
-cardcontrolButtons.update();
+const cardControlButtons = new CardControlButtons(mainContent);
+cardControlButtons.init();

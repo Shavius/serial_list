@@ -1,5 +1,6 @@
 import CardUpdate from "./CardUpdate";
 import CardMover from "./CardMover";
+import CardChange from "./CardChange";
 import CardDelete from "./CardDelete";
 
 export default class CardControlButtons {
@@ -9,7 +10,7 @@ export default class CardControlButtons {
 		this.mainContentElement = mainContentElement;
 	}
 
-	update(): void {
+	init(): void {
 		if (this.mainContentElement !== null) {
 			this.mainContentElement.addEventListener("click", (event) => {
 				const pageElement = event.target as HTMLElement;
@@ -47,6 +48,15 @@ export default class CardControlButtons {
 
 					if (cardElement !== null) {
 						new CardMover(cardElement).moveDown();
+					}
+				}
+
+				if (pageElement.classList.contains("serial-card__button-change")) {
+					const clickedButton = event.target as HTMLElement;
+					const cardElement = clickedButton.closest<HTMLElement>(".serial-card");
+
+					if (cardElement !== null) {
+						new CardChange(cardElement).init();
 					}
 				}
 
