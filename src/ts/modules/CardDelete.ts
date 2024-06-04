@@ -11,16 +11,19 @@ export default class CardDelete {
 	createDeleteWindow(): HTMLElement | null {
 		if (this.cardElement !== null) {
 			const deleteWindow = document.createElement("div");
-			deleteWindow.classList.add("delete-window");
+			deleteWindow.classList.add("modal-overlay");
 			const serialName = this.cardElement.querySelector(".serial-card__title")?.innerHTML;
 
 			deleteWindow.innerHTML = `
-        <div class="delete-window__title">Видалити серіал ?</div>
-			<div class="delete-window__title-serial">${serialName}</div>
-			<div class="delete-window__buttons">
-				<div class="delete-window__buttons-item delete-window__buttons-yes">Так</div>
-				<div class="delete-window__buttons-item delete-window__buttons-no">Ні</div>
-		</div>
+			<div class="modal">
+        		<div class="modal__title">Видалити серіал ?</div>
+					<div class="modal__title-serial">${serialName}</div>
+					<div class="modal-buttons">
+						<div class="modal-buttons__item modal__buttons-yes">Так</div>
+						<div class="modal-buttons__item modal__buttons-no">Ні</div>
+					</div>
+				</div>
+			</div>
         `;
 
 			return deleteWindow;
@@ -34,25 +37,23 @@ export default class CardDelete {
 			const body = document.querySelector("body");
 			if (body !== null) {
 				const createFormCard = new CreateFormCard(null, body);
-				const wrap = createFormCard.createBlackWrapper();
 				const deleteWindow = this.createDeleteWindow();
 
 				if (deleteWindow !== null) {
-					body.classList.add("body-blocked");
-					body.append(wrap);
+					body.classList.add("body-lock");
 					body.append(deleteWindow);
 
-					const buttonDelete = deleteWindow.querySelector(".delete-window__buttons-yes");
-					const buttonNoDelete = deleteWindow.querySelector(".delete-window__buttons-no");
+					const buttonDelete = deleteWindow.querySelector(".modal__buttons-yes");
+					const buttonNoDelete = deleteWindow.querySelector(".modal__buttons-no");
 
 					if (buttonDelete !== null && buttonNoDelete !== null) {
 						buttonDelete.addEventListener("click", () => {
 							this.cardElement?.remove();
-							createFormCard.closeCard(body, deleteWindow, wrap);
+							createFormCard.closeCard(body, deleteWindow);
 						});
 
 						buttonNoDelete.addEventListener("click", () => {
-							createFormCard.closeCard(body, deleteWindow, wrap);
+							createFormCard.closeCard(body, deleteWindow);
 						});
 					}
 				}

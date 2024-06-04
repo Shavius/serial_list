@@ -1,40 +1,14 @@
-.create-card-wrapper {
-	position: absolute;
-	top: 0;
-	left: 0;
-	z-index: 500;
-	width: 100%;
-}
-
-.card-wrapper {
-	position: absolute;
+.modal {
+	position: relative;
 	top: 5px;
 	left: 0;
-	overflow: hidden;
-	width: 100%;
-}
-
-.create-card {
-	border: 1px solid black;
-	position: relative;
-	top: 0;
-	left: 0;
-	background-color: $ColorBackgroundSigment;
+	z-index: 500;
+	background: white;
+	border-radius: 5px;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 	max-width: $PageWidth;
+	padding: 5px;
 	margin: 0 auto;
-
-	&__exit {
-		@include ButtonBG();
-		display: inline-block;
-		padding: 5px;
-		position: absolute;
-		top: 5px;
-		right: 5px;
-
-		&:active {
-			@include ButtonClickBG();
-		}
-	}
 
 	&__title {
 		font-size: 20px;
@@ -42,17 +16,22 @@
 		text-align: center;
 	}
 
+	&__title-serial {
+		font-size: 18px;
+		margin: 10px 0;
+	}
+
 	&__inputs {
 		margin: 10px;
 	}
 }
 
-.create-card-input {
+.modal-inputs {
 	&__item-text {
 		margin-bottom: 5px;
 	}
 
-	&__item-text-input {
+	&__item-input {
 		border: 1px solid black;
 		outline: none;
 		width: 100%;
@@ -65,7 +44,7 @@
 	}
 }
 
-.create-card-buttons {
+.modal-buttons {
 	text-align: center;
 	margin-bottom: 10px;
 
