@@ -14,7 +14,7 @@ export default class CardChange {
 		if (this.cardElement !== null) {
 			const card = this.cardElement;
 
-			let cardImgString: string = "";
+			let cardImgString = "";
 			const cardImg = card.querySelector<HTMLImageElement>(".serial-card__img");
 			if (cardImg?.src !== null && cardImg?.src !== undefined) {
 				cardImgString = cardImg.src;

@@ -4,10 +4,10 @@ type params = "up" | "down";
 
 export default class CardUpdate {
 	currentCard: HTMLElement | null;
-	nameCurrentSeria: string = ".serial-info__number-current span";
-	nameAllSeria: string = ".serial-info__number-all span";
-	nameLeftSeria: string = ".serial-info__number-left span";
-	nameDateUpdate: string = ".card-date__item-update span";
+	nameCurrentSeria = ".serial-info__number-current span";
+	nameAllSeria = ".serial-info__number-all span";
+	nameLeftSeria = ".serial-info__number-left span";
+	nameDateUpdate = ".card-date__item-update span";
 
 	constructor(currentCard: HTMLElement | null) {
 		this.currentCard = currentCard;
@@ -22,7 +22,7 @@ export default class CardUpdate {
 
 			if (currentSeria !== null) {
 				const currentSeriaString: string = currentSeria.innerHTML;
-				let currentSeriaNumber: number = Number(currentSeriaString);
+				let currentSeriaNumber = Number(currentSeriaString);
 
 				if (dateUpdate !== null) {
 					const currentDate = new DateControl().getCurrentDate();
@@ -40,7 +40,7 @@ export default class CardUpdate {
 				currentSeria.innerHTML = `${currentSeriaNumber}`;
 
 				if (leftSeria !== null && allSeria !== null) {
-					const allSeriaNumber: number = Number(allSeria.innerHTML);
+					const allSeriaNumber = Number(allSeria.innerHTML);
 
 					const left = allSeriaNumber - currentSeriaNumber;
 
