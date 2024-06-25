@@ -26,6 +26,16 @@ module.exports = {
 				ts: "never",
 			},
 		],
+		"@typescript-eslint/explicit-function-return-type": [
+			"error",
+			{
+				allowExpressions: false,
+				allowTypedFunctionExpressions: true,
+				allowHigherOrderFunctions: false,
+				allowDirectConstAssertionInArrowFunctions: false,
+				allowConciseArrowFunctionExpressionsStartingWithVoid: false,
+			},
+		],
 		"no-console": "off",
 		"func-names": "off",
 		"lines-between-class-members": "off",
