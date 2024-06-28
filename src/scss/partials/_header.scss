@@ -12,19 +12,7 @@
 		align-items: center;
 	}
 
-	&__authorization {
-		@include ButtonBG();
-		border-radius: 5px;
-		padding: 5px 0;
-		width: $ButtonWidthSize;
-		text-align: center;
-
-		&:active {
-			@include ButtonClickBG();
-		}
-	}
-
-	&__create-serial {
+	&__button {
 		@include ButtonBG();
 		border-radius: 5px;
 		padding: 5px 0;

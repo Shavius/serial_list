@@ -2,15 +2,29 @@ import CardUpdate from "./CardUpdate";
 import CardMover from "./CardMover";
 import CardChange from "./CardChange";
 import CardDelete from "./CardDelete";
+import WindowAuthorization from "./WindowAuthorization";
 
 export default class CardControlButtons {
+	headerElement: HTMLElement | null;
 	mainContentElement: HTMLElement | null;
 
-	constructor(mainContentElement: HTMLElement | null) {
-		this.mainContentElement = mainContentElement;
+	constructor() {
+		this.headerElement = document.querySelector(".header");
+		this.mainContentElement = document.querySelector(".main__content");
 	}
 
 	init(): void {
+		if (this.headerElement !== null) {
+			this.headerElement.addEventListener("click", (event) => {
+				const pageElement = event.target as HTMLElement;
+
+				if (pageElement.classList.contains("header__authorization")) {
+					const authorization = new WindowAuthorization();
+					authorization.init();
+				}
+			});
+		}
+
 		if (this.mainContentElement !== null) {
 			this.mainContentElement.addEventListener("click", (event) => {
 				const pageElement = event.target as HTMLElement;
