@@ -2,7 +2,7 @@ import CardUpdate from "./CardUpdate";
 import CardMover from "./CardMover";
 import CardChange from "./CardChange";
 import CardDelete from "./CardDelete";
-import WindowAuthorization from "./WindowAuthorization";
+import Authorization from "./Authorization";
 
 export default class CardControlButtons {
 	headerElement: HTMLElement | null;
@@ -19,7 +19,7 @@ export default class CardControlButtons {
 				const pageElement = event.target as HTMLElement;
 
 				if (pageElement.classList.contains("header__authorization")) {
-					const authorization = new WindowAuthorization();
+					const authorization = new Authorization();
 					authorization.init();
 				}
 			});
