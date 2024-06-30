@@ -1,13 +1,8 @@
 /* eslint-disable class-methods-use-this */
 
+import IUserData from "../interfaces/IUserData";
 import FirebaseControl from "./FirebaseControl";
 import ModalAuthorization from "./ModalAuthorization";
-
-interface userDataText {
-	userEmail: string;
-	userPassword: string;
-	userId: string;
-}
 
 export default class Authorization {
 	modal: ModalAuthorization;
@@ -16,16 +11,16 @@ export default class Authorization {
 		this.modal = new ModalAuthorization();
 	}
 
-	getDataFromModal(): userDataText | null {
+	getDataFromModal(): IUserData | null {
 		const userEmailText: HTMLInputElement | null = document.querySelector(".modal-authorization__email");
 		const userPasswordText: HTMLInputElement | null = document.querySelector(".modal-authorization__password");
 		const userIdText: HTMLInputElement | null = document.querySelector(".modal-authorization__user-id");
 
 		if (userEmailText !== null && userPasswordText !== null && userIdText !== null) {
 			return {
-				userEmail: userEmailText.value,
-				userPassword: userPasswordText.value,
-				userId: userIdText.value,
+				email: userEmailText.value,
+				password: userPasswordText.value,
+				id: userIdText.value,
 			};
 		}
 
@@ -38,8 +33,10 @@ export default class Authorization {
 			const firebase = new FirebaseControl();
 			const token = await firebase.loginWithEmailPassword(email, password, id);
 			if (token !== "error") {
-				const data = JSON.stringify(token);
-				localStorage.setItem("userToken", data);
+				const userData: IUserData = { email, password, id };
+				const userDataText = JSON.stringify(userData);
+				localStorage.setItem("userData", userDataText);
+
 				this.modal.modalYes("Перевірка пройшла вдало!");
 			} else {
 				this.modal.modalError("В доступі відмовлено!");
@@ -64,15 +61,10 @@ export default class Authorization {
 		if (buttonYes !== null) {
 			buttonYes.addEventListener("click", (e) => {
 				e.preventDefault();
-				const userData: userDataText | null = this.getDataFromModal();
+				const userData: IUserData | null = this.getDataFromModal();
 
-				if (
-					userData !== null &&
-					userData.userEmail !== "" &&
-					userData.userPassword !== "" &&
-					userData.userId !== ""
-				) {
-					this.complite(userData.userEmail, userData.userPassword, userData.userId);
+				if (userData !== null && userData.email !== "" && userData.password !== "" && userData.id !== "") {
+					this.complite(userData.email, userData.password, userData.id);
 				}
 			});
 		}
