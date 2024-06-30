@@ -3,6 +3,7 @@ import CardMover from "./CardMover";
 import CardChange from "./CardChange";
 import CardDelete from "./CardDelete";
 import Authorization from "./Authorization";
+import DataSendToServer from "./DataSendToServer";
 
 export default class CardControlButtons {
 	headerElement: HTMLElement | null;
@@ -21,6 +22,11 @@ export default class CardControlButtons {
 				if (pageElement.classList.contains("header__authorization")) {
 					const authorization = new Authorization();
 					authorization.init();
+				}
+
+				if (pageElement.classList.contains("header__push-serial")) {
+					const dataSendToServer = new DataSendToServer();
+					dataSendToServer.init();
 				}
 			});
 		}
