@@ -7,34 +7,17 @@ export default class Modal {
 		this.body = document.querySelector("body");
 	}
 
-	createModalOverlay(): HTMLElement {
+	createModalWrapper(): HTMLElement {
 		const modalOverlay = document.createElement("div");
 		modalOverlay.classList.add("modal-overlay");
 
 		return modalOverlay;
 	}
 
-	createModalAuthorization(): HTMLElement {
-		const modalOverlay = this.createModalOverlay();
+	createModal(): HTMLElement {
+		const modalOverlay = this.createModalWrapper();
 		modalOverlay.innerHTML = `
-        <div class="modal">
-            <div class="modal__title">Авторизація</div>
-            <form class="modal-authorization" action="#" method="post">
-                <label for="email">Пошта користувача</label>
-                <input type="email" class="modal-authorization__email" id="email" name="email" required>
-
-                <label for="password">Пароль</label>
-                <input type="password" class="modal-authorization__password" id="password" name="password" required>
-
-                <label for="user-id">ID</label>
-                <input type="text" class="modal-authorization__user-id" id="user-id" name="user-id" required>
-
-                <div class="modal-buttons">
-                    <button class="modal-buttons__item modal__buttons-yes" type="submit">Увійти</button>
-                    <button class="modal-buttons__item modal__buttons-no" type="button">Відміна</button>
-                </div>
-            </form>
-		</div>
+        <div class="modal"></div>
         `;
 
 		return modalOverlay;
@@ -43,7 +26,7 @@ export default class Modal {
 	addModalToPage(): void {
 		if (this.body !== null) {
 			this.body.classList.add("body-lock");
-			this.body.append(this.createModalAuthorization());
+			this.body.append(this.createModal());
 		}
 	}
 

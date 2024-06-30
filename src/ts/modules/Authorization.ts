@@ -1,7 +1,7 @@
 /* eslint-disable class-methods-use-this */
 
-import Modal from "./Modal";
 import FirebaseControl from "./FirebaseControl";
+import ModalAuthorization from "./ModalAuthorization";
 
 interface userDataText {
 	userEmail: string;
@@ -10,10 +10,10 @@ interface userDataText {
 }
 
 export default class Authorization {
-	modal: Modal;
+	modal: ModalAuthorization;
 
 	constructor() {
-		this.modal = new Modal();
+		this.modal = new ModalAuthorization();
 	}
 
 	getDataFromModal(): userDataText | null {
