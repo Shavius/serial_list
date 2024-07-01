@@ -48,7 +48,7 @@ export default class DataSendToServer {
 		return null;
 	}
 
-	async pushToServer(userData: IUserData, dataCard: IDataCard[]): Promise<void> {
+	async pushToServer(userData: IUserData, dataCard: IDataCard[] | []): Promise<void> {
 		const modal = new Modal();
 		modal.addModalToPage();
 		modal.modalLoad("Зачекайте іде відправка даних");
@@ -77,6 +77,10 @@ export default class DataSendToServer {
 
 		if (userData !== null && cardData !== null) {
 			this.pushToServer(userData, cardData);
+		}
+
+		if (userData !== null && cardData === null) {
+			this.pushToServer(userData, []);
 		}
 	}
 }

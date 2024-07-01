@@ -36,7 +36,7 @@ export default class FirebaseControl {
 		return idToken;
 	};
 
-	sendDataToDatabase = async (idToken: string, data: IDataCard[]): Promise<boolean> => {
+	sendDataToDatabase = async (idToken: string, data: IDataCard[] | []): Promise<boolean> => {
 		const url = `https://shava-serial-list-default-rtdb.firebaseio.com/user.json?auth=${idToken}`;
 
 		try {
@@ -60,7 +60,7 @@ export default class FirebaseControl {
 		}
 	};
 
-	getDataFromDatabase = async (idToken: string): Promise<string | null> => {
+	getDataFromDatabase = async (idToken: string): Promise<IDataCard[] | null | []> => {
 		const url = `https://shava-serial-list-default-rtdb.firebaseio.com/user.json?auth=${idToken}`;
 
 		try {
@@ -75,7 +75,7 @@ export default class FirebaseControl {
 				throw new Error("Ошибка получения данных");
 			}
 
-			const data: string = await response.json();
+			const data: IDataCard[] | [] = await response.json();
 			console.log("Данные из базы данных:", data);
 			return data;
 		} catch (error) {

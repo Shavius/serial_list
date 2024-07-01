@@ -4,6 +4,7 @@ import CardChange from "./CardChange";
 import CardDelete from "./CardDelete";
 import Authorization from "./Authorization";
 import DataSendToServer from "./DataSendToServer";
+import DataGetFromServer from "./DataGetFromServer";
 
 export default class CardControlButtons {
 	headerElement: HTMLElement | null;
@@ -27,6 +28,11 @@ export default class CardControlButtons {
 				if (pageElement.classList.contains("header__push-serial")) {
 					const dataSendToServer = new DataSendToServer();
 					dataSendToServer.init();
+				}
+
+				if (pageElement.classList.contains("header__get-card")) {
+					const getDataCardFromServer = new DataGetFromServer();
+					getDataCardFromServer.init();
 				}
 			});
 		}
