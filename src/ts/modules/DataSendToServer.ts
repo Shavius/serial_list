@@ -7,6 +7,13 @@ import FirebaseControl from "./FirebaseControl";
 import Modal from "./Modal";
 
 export default class DataSendToServer {
+	modal: Modal;
+	textError = "Вибачте щось пішло не так, спробуйте вийти та авторізуватися знов";
+
+	constructor() {
+		this.modal = new Modal();
+	}
+
 	getCardsFromPage(): HTMLElement[] | null {
 		const cards = document.querySelectorAll(".serial-card");
 
@@ -49,9 +56,8 @@ export default class DataSendToServer {
 	}
 
 	async pushToServer(userData: IUserData, dataCard: IDataCard[] | []): Promise<void> {
-		const modal = new Modal();
-		modal.addModalToPage();
-		modal.modalLoad("Зачекайте іде відправка даних");
+		this.modal.addModalToPage();
+		this.modal.modalLoad("Зачекайте іде відправка даних");
 
 		const firebase = new FirebaseControl();
 		const token = await firebase.loginWithEmailPassword(userData.email, userData.password, userData.id);
@@ -61,13 +67,13 @@ export default class DataSendToServer {
 
 			if (responseToServer) {
 				console.log("Отправил!");
-				modal.removeModalToPage();
+				this.modal.removeModalToPage();
 			} else {
 				console.error("Не отправил");
-				modal.modalError("Вибачте щось пішло не так, спробуйте вийти та авторізуватися знов");
+				this.modal.modalError(this.textError);
 			}
 		} else {
-			modal.modalError("Вибачте щось пішло не так, спробуйте вийти та авторізуватися знов");
+			this.modal.modalError(this.textError);
 		}
 	}
 
@@ -75,12 +81,17 @@ export default class DataSendToServer {
 		const userData: IUserData | null = this.getUserData();
 		const cardData: IDataCard[] | null = this.getDataFromCards();
 
-		if (userData !== null && cardData !== null) {
-			this.pushToServer(userData, cardData);
-		}
+		if (userData !== null) {
+			if (cardData !== null) {
+				this.pushToServer(userData, cardData);
+			}
 
-		if (userData !== null && cardData === null) {
-			this.pushToServer(userData, []);
+			if (cardData === null) {
+				this.pushToServer(userData, []);
+			}
+		} else {
+			this.modal.addModalToPage();
+			this.modal.modalError(this.textError);
 		}
 	}
 }
