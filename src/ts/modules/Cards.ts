@@ -3,9 +3,9 @@
 export default class Cards {
 	createCardLoad(): HTMLElement {
 		const cardLoad: HTMLElement = document.createElement("div");
-		cardLoad.classList.add("card-load");
+		cardLoad.classList.add("card-info");
 		cardLoad.innerHTML = `
-        <div class="card-load__title">Зачекайте йде завантаженя</div>
+        <div class="card-info__title">Зачекайте йде завантаженя</div>
         <div class="loader">
             <div class="loader__item"></div>
         </div>
@@ -16,9 +16,19 @@ export default class Cards {
 
 	createEmptyCard(): HTMLElement {
 		const emptyCard: HTMLElement = document.createElement("div");
-		emptyCard.classList.add("card-load");
+		emptyCard.classList.add("card-info");
 		emptyCard.innerHTML = `
-        <div class="card-load__title">Ваш список порожний</div>
+        <div class="card-info__title">Ваш список порожний</div>
+        `;
+
+		return emptyCard;
+	}
+
+	createNoAuthorizationCard(): HTMLElement {
+		const emptyCard: HTMLElement = document.createElement("div");
+		emptyCard.classList.add("card-info");
+		emptyCard.innerHTML = `
+        <div class="card-info__title">Ви не авторизовані, будь ласка, авторизуйтесь</div>
         `;
 
 		return emptyCard;

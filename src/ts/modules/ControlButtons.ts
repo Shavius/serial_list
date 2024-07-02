@@ -4,14 +4,15 @@ import CardChange from "./CardChange";
 import CardDelete from "./CardDelete";
 import Authorization from "./Authorization";
 import DataSendToServer from "./DataSendToServer";
-import DataGetFromServer from "./DataGetFromServer";
+import CreateFormCard from "./CreateFormCard";
+import UserExit from "./UserExit";
 
 export default class ControlButtons {
 	headerElement: HTMLElement | null;
 	mainContentElement: HTMLElement | null;
 
 	constructor() {
-		this.headerElement = document.querySelector(".header");
+		this.headerElement = document.querySelector(".header__buttons");
 		this.mainContentElement = document.querySelector(".main__content");
 	}
 
@@ -25,14 +26,19 @@ export default class ControlButtons {
 					authorization.init();
 				}
 
+				if (pageElement.classList.contains("header__authorization-exit")) {
+					const userExit = new UserExit();
+					userExit.init();
+				}
+
 				if (pageElement.classList.contains("header__push-serial")) {
 					const dataSendToServer = new DataSendToServer();
 					dataSendToServer.init();
 				}
 
-				if (pageElement.classList.contains("header__get-card")) {
-					const getDataCardFromServer = new DataGetFromServer();
-					getDataCardFromServer.init();
+				if (pageElement.classList.contains("header__create-serial")) {
+					const createFormCard = new CreateFormCard();
+					createFormCard.init();
 				}
 			});
 		}

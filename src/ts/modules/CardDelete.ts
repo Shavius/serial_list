@@ -36,7 +36,7 @@ export default class CardDelete {
 		if (this.cardElement !== null) {
 			const body = document.querySelector("body");
 			if (body !== null) {
-				const createFormCard = new CreateFormCard(null, body);
+				const createFormCard = new CreateFormCard();
 				const deleteWindow = this.createDeleteWindow();
 
 				if (deleteWindow !== null) {

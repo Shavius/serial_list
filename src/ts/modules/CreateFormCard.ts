@@ -6,11 +6,9 @@ import ParseCard from "./ParseCard";
 
 export default class CreateFormCard {
 	pageBody: HTMLElement | null;
-	buttonCreate: HTMLElement | null;
 
-	constructor(pageBody: HTMLElement | null, buttonCreate: HTMLElement | null) {
-		this.pageBody = pageBody;
-		this.buttonCreate = buttonCreate;
+	constructor() {
+		this.pageBody = document.querySelector("body");
 	}
 
 	createForm(dataCardInfo: IDataCard | undefined = undefined): HTMLElement {
@@ -62,7 +60,7 @@ export default class CreateFormCard {
 		}
 	}
 
-	init(dataCardInfo: IDataCard | undefined = undefined, cardElement: HTMLElement | null = null): void {
+	addCard(dataCardInfo: IDataCard | undefined = undefined, cardElement: HTMLElement | null = null): void {
 		if (this.pageBody !== null) {
 			let card = this.createForm();
 
@@ -131,11 +129,9 @@ export default class CreateFormCard {
 		}
 	}
 
-	buttonInit(): void {
-		if (this.pageBody !== null && this.buttonCreate !== null) {
-			this.buttonCreate.addEventListener("click", () => {
-				this.init();
-			});
+	init(): void {
+		if (this.pageBody !== null) {
+			this.addCard();
 		}
 	}
 }

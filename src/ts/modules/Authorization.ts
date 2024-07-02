@@ -3,6 +3,7 @@
 import IUserData from "../interfaces/IUserData";
 import FirebaseControl from "./FirebaseControl";
 import ModalAuthorization from "./ModalAuthorization";
+import UserCheck from "./UserCheck";
 
 export default class Authorization {
 	modal: ModalAuthorization;
@@ -38,6 +39,8 @@ export default class Authorization {
 				localStorage.setItem("userData", userDataText);
 
 				this.modal.modalYes("Перевірка пройшла вдало!");
+				const userCeck = new UserCheck();
+				userCeck.init();
 			} else {
 				this.modal.modalError("В доступі відмовлено!");
 			}

@@ -41,8 +41,8 @@ export default class CardChange {
 		const data: IDataCard | undefined = this.getDataCard();
 
 		if (body !== null && data !== undefined && this.cardElement !== null) {
-			const createFormCard = new CreateFormCard(body, null);
-			createFormCard.init(data, this.cardElement);
+			const createFormCard = new CreateFormCard();
+			createFormCard.addCard(data, this.cardElement);
 		}
 	}
 }
