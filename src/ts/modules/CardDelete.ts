@@ -1,4 +1,5 @@
 /* eslint-disable class-methods-use-this */
+import Cards from "./Cards";
 import CreateFormCard from "./CreateFormCard";
 
 export default class CardDelete {
@@ -32,6 +33,15 @@ export default class CardDelete {
 		return null;
 	}
 
+	addEmptyCard(): void {
+		const cardList = document.querySelectorAll(".serial-card");
+
+		if (cardList.length === 0) {
+			const cards = new Cards();
+			cards.addCard(cards.createEmptyCard());
+		}
+	}
+
 	init(): void {
 		if (this.cardElement !== null) {
 			const body = document.querySelector("body");
@@ -50,6 +60,7 @@ export default class CardDelete {
 						buttonDelete.addEventListener("click", () => {
 							this.cardElement?.remove();
 							createFormCard.closeCard(body, deleteWindow);
+							this.addEmptyCard();
 						});
 
 						buttonNoDelete.addEventListener("click", () => {

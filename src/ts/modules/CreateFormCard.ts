@@ -60,6 +60,14 @@ export default class CreateFormCard {
 		}
 	}
 
+	removeEmptyCard(): void {
+		const emptyCard = document.querySelector(".card-info");
+
+		if (emptyCard !== null) {
+			emptyCard.remove();
+		}
+	}
+
 	addCard(dataCardInfo: IDataCard | undefined = undefined, cardElement: HTMLElement | null = null): void {
 		if (this.pageBody !== null) {
 			let card = this.createForm();
@@ -119,6 +127,7 @@ export default class CreateFormCard {
 								parseCard.changeOneCard(cardElement);
 							} else {
 								parseCard.parseOneCard();
+								this.removeEmptyCard();
 							}
 						} else {
 							console.log("Серии не чесла и не равны 0");
