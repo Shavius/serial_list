@@ -1,7 +1,7 @@
 import "../index.html";
 import "../scss/style.scss";
 import CreateFormCard from "./modules/CreateFormCard";
-import CardControlButtons from "./modules/CardControlButtons";
+import ControlButtons from "./modules/ControlButtons";
 
 console.log("Hello");
 
@@ -11,5 +11,5 @@ const pageButtonCreateSerial: HTMLElement | null = document.querySelector(".head
 const createCard = new CreateFormCard(pageBody, pageButtonCreateSerial);
 createCard.buttonInit();
 
-const cardControlButtons = new CardControlButtons();
-cardControlButtons.init();
+const controlButtons = new ControlButtons();
+controlButtons.init();

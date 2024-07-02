@@ -6,7 +6,7 @@ import Authorization from "./Authorization";
 import DataSendToServer from "./DataSendToServer";
 import DataGetFromServer from "./DataGetFromServer";
 
-export default class CardControlButtons {
+export default class ControlButtons {
 	headerElement: HTMLElement | null;
 	mainContentElement: HTMLElement | null;
 
