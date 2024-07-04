@@ -66,6 +66,13 @@ module.exports = {
 					filename: "fonts/[name][ext]",
 				},
 			},
+			{
+				test: /\.(ico)$/i,
+				type: "asset/resource",
+				generator: {
+					filename: "img/[name][ext]",
+				},
+			},
 		],
 	},
 
