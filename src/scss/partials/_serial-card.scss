@@ -78,6 +78,7 @@
 
 .top-buttons {
 	text-align: right;
+	margin-bottom: 5px;
 
 	&__item {
 		@include ButtonBG();
