@@ -21,6 +21,7 @@
 	}
 
 	&__title-serial {
+		text-align: center;
 		font-size: 18px;
 		margin: 10px 0;
 	}
@@ -77,6 +78,7 @@
 	&__item {
 		@include ButtonBG();
 		display: inline-block;
+		width: 100px;
 		padding: 5px 10px;
 		margin-right: 10px;
 
