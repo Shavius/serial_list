@@ -35,5 +35,9 @@ a {
 
 	&--bottom {
 		margin-top: 90px;
+
+		@media (max-width: 377px) {
+			margin-top: 110px;
+		}
 	}
 }

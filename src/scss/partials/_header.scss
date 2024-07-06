@@ -9,6 +9,12 @@
 	background-color: $ColorBackgroundSigment;
 	padding: 10px 5px;
 
+	@media (max-width: 450px) {
+		border: none;
+		border-radius: 0;
+		box-shadow: black 2px 2px 4px;
+	}
+
 	&__title {
 		display: block;
 		text-align: center;
