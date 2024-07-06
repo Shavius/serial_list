@@ -31,7 +31,7 @@ export default class ControlButtons {
 					userExit.init();
 				}
 
-				if (pageElement.classList.contains("header__push-serial")) {
+				if (pageElement.classList.contains("header__push-serial--active")) {
 					const dataSendToServer = new DataSendToServer();
 					dataSendToServer.init();
 				}

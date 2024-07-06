@@ -27,7 +27,7 @@ export default class UserCheck {
 			buttonPushSerial.classList.add("header__button", "header__push-serial");
 
 			buttonCreateSerial.innerHTML = `Додати серіал`;
-			buttonPushSerial.innerHTML = `Зберегти`;
+			buttonPushSerial.innerHTML = `----`;
 
 			headerButtons.prepend(buttonCreateSerial, buttonPushSerial);
 		}

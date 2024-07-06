@@ -1,4 +1,5 @@
 /* eslint-disable class-methods-use-this */
+import ButtonPushControl from "./ButtonPushControl";
 import Cards from "./Cards";
 import CreateFormCard from "./CreateFormCard";
 
@@ -61,6 +62,8 @@ export default class CardDelete {
 							this.cardElement?.remove();
 							createFormCard.closeCard(body, deleteWindow);
 							this.addEmptyCard();
+
+							ButtonPushControl.init();
 						});
 
 						buttonNoDelete.addEventListener("click", () => {

@@ -43,4 +43,12 @@
 			margin-right: 0;
 		}
 	}
+
+	&__push-serial {
+		cursor: not-allowed;
+	}
+
+	&__push-serial--active {
+		background-color: green;
+	}
 }

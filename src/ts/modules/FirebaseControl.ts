@@ -27,11 +27,9 @@ export default class FirebaseControl {
 		}
 
 		const data = await response.json();
-		console.log("Успешная аутентификация:", data);
 
 		// Вы можете сохранить токен для дальнейшего использования
 		const { idToken } = data;
-		console.log(idToken);
 
 		return idToken;
 	};
@@ -52,7 +50,6 @@ export default class FirebaseControl {
 				throw new Error("Ошибка отправки данных");
 			}
 
-			console.log("Данные успешно отправлены:", data);
 			return true;
 		} catch (error) {
 			console.error("Ошибка:", error);
@@ -76,7 +73,7 @@ export default class FirebaseControl {
 			}
 
 			const data: IDataCard[] | [] = await response.json();
-			console.log("Данные из базы данных:", data);
+
 			return data;
 		} catch (error) {
 			console.error("Ошибка:", error);

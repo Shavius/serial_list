@@ -1,3 +1,4 @@
+import ButtonPushControl from "./ButtonPushControl";
 import DateControl from "./DateControl";
 
 type params = "up" | "down";
@@ -38,6 +39,8 @@ export default class CardUpdate {
 				}
 
 				currentSeria.innerHTML = `${currentSeriaNumber}`;
+
+				ButtonPushControl.init();
 
 				if (leftSeria !== null && allSeria !== null) {
 					const allSeriaNumber = Number(allSeria.innerHTML);

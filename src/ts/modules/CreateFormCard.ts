@@ -1,6 +1,7 @@
 /* eslint-disable class-methods-use-this */
 
 import type IDataCard from "../interfaces/IDataCard";
+import ButtonPushControl from "./ButtonPushControl";
 import DateControl from "./DateControl";
 import ParseCard from "./ParseCard";
 
@@ -125,9 +126,13 @@ export default class CreateFormCard {
 
 							if (dataCardInfo !== undefined && cardElement !== null) {
 								parseCard.changeOneCard(cardElement);
+
+								ButtonPushControl.init();
 							} else {
 								parseCard.parseOneCard();
 								this.removeEmptyCard();
+
+								ButtonPushControl.init();
 							}
 						} else {
 							console.log("Серии не чесла и не равны 0");

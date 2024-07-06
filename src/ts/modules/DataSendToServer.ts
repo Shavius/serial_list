@@ -2,6 +2,7 @@
 
 import IDataCard from "../interfaces/IDataCard";
 import IUserData from "../interfaces/IUserData";
+import ButtonPushControl from "./ButtonPushControl";
 import CardChange from "./CardChange";
 import FirebaseControl from "./FirebaseControl";
 import Modal from "./Modal";
@@ -66,10 +67,9 @@ export default class DataSendToServer {
 			const responseToServer = await firebase.sendDataToDatabase(token, dataCard);
 
 			if (responseToServer) {
-				console.log("Отправил!");
 				this.modal.removeModalToPage();
+				ButtonPushControl.buttonDisable();
 			} else {
-				console.error("Не отправил");
 				this.modal.modalError(this.textError);
 			}
 		} else {
