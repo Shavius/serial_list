@@ -25,4 +25,15 @@ a {
 .wrapper {
 	max-width: $PageWidth;
 	margin: 0 auto;
+
+	&--top {
+		overflow: hidden;
+		position: relative;
+		top: auto;
+		left: auto;
+	}
+
+	&--bottom {
+		margin-top: 90px;
+	}
 }
