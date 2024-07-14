@@ -15,26 +15,24 @@ export default class Authorization {
 	getDataFromModal(): IUserData | null {
 		const userEmailText: HTMLInputElement | null = document.querySelector(".modal-authorization__email");
 		const userPasswordText: HTMLInputElement | null = document.querySelector(".modal-authorization__password");
-		const userIdText: HTMLInputElement | null = document.querySelector(".modal-authorization__user-id");
 
-		if (userEmailText !== null && userPasswordText !== null && userIdText !== null) {
+		if (userEmailText !== null && userPasswordText !== null) {
 			return {
 				email: userEmailText.value,
 				password: userPasswordText.value,
-				id: userIdText.value,
 			};
 		}
 
 		return null;
 	}
 
-	async complite(email: string, password: string, id: string): Promise<void> {
+	async complite(email: string, password: string): Promise<void> {
 		this.modal.modalLoad("Йде перевірка зачикайте");
 		try {
 			const firebase = new FirebaseControl();
-			const token = await firebase.loginWithEmailPassword(email, password, id);
+			const token = await firebase.loginWithEmailPassword(email, password);
 			if (token !== "error") {
-				const userData: IUserData = { email, password, id };
+				const userData: IUserData = { email, password };
 				const userDataText = JSON.stringify(userData);
 				localStorage.setItem("userData", userDataText);
 
@@ -66,8 +64,8 @@ export default class Authorization {
 				e.preventDefault();
 				const userData: IUserData | null = this.getDataFromModal();
 
-				if (userData !== null && userData.email !== "" && userData.password !== "" && userData.id !== "") {
-					this.complite(userData.email, userData.password, userData.id);
+				if (userData !== null && userData.email !== "" && userData.password !== "") {
+					this.complite(userData.email, userData.password);
 				}
 			});
 		}

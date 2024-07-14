@@ -61,7 +61,7 @@ export default class DataSendToServer {
 		this.modal.modalLoad("Зачекайте іде відправка даних");
 
 		const firebase = new FirebaseControl();
-		const token = await firebase.loginWithEmailPassword(userData.email, userData.password, userData.id);
+		const token = await firebase.loginWithEmailPassword(userData.email, userData.password);
 
 		if (token !== "error") {
 			const responseToServer = await firebase.sendDataToDatabase(token, dataCard);

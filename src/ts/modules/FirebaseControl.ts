@@ -3,8 +3,10 @@
 import IDataCard from "../interfaces/IDataCard";
 
 export default class FirebaseControl {
-	loginWithEmailPassword = async (email: string, password: string, apiKey: string): Promise<string> => {
-		const url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${apiKey}`;
+	apiKey = "AIzaSyAq45dRJ0bhYpvQr42e0PpBq2CnMxSlq54";
+
+	loginWithEmailPassword = async (email: string, password: string): Promise<string> => {
+		const url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${this.apiKey}`;
 		const payload = {
 			email,
 			password,

@@ -20,7 +20,7 @@ export default class DataGetFromServer {
 	async getDataFromServer(userData: IUserData): Promise<void> {
 		const cardLoad = this.cards.addCard(this.cards.createCardLoad());
 		const firebase = new FirebaseControl();
-		const token: string = await firebase.loginWithEmailPassword(userData.email, userData.password, userData.id);
+		const token: string = await firebase.loginWithEmailPassword(userData.email, userData.password);
 
 		if (token !== "error") {
 			const cardData: [] | IDataCard[] | null = await firebase.getDataFromDatabase(token);

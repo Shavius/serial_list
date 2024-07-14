@@ -13,9 +13,6 @@ export default class ModalAuthorization extends Modal {
                 <label for="password">Пароль</label>
                 <input type="password" class="modal-authorization__password" id="password" name="password" required>
 
-                <label for="user-id">ID</label>
-                <input type="text" class="modal-authorization__user-id" id="user-id" name="user-id" required>
-
                 <div class="modal-buttons">
                     <button class="modal-buttons__item modal__buttons-yes" type="submit">Увійти</button>
                     <button class="modal-buttons__item modal__buttons-no" type="button">Відміна</button>
