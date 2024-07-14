@@ -4,6 +4,7 @@ import IUserData from "../interfaces/IUserData";
 import Cards from "./Cards";
 import DataGetFromServer from "./DataGetFromServer";
 import DataSendToServer from "./DataSendToServer";
+import HeaderHeight from "./HeaderHeight";
 
 export default class UserCheck {
 	dataSendToServer: DataSendToServer;
@@ -60,6 +61,9 @@ export default class UserCheck {
 
 		if (userData !== null) {
 			this.userYes();
+
+			const headerHeight = new HeaderHeight();
+			headerHeight.init();
 		} else {
 			this.userNo();
 		}
