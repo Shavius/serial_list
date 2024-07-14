@@ -1,11 +1,12 @@
 import ButtonPushControl from "./ButtonPushControl";
 
-/* eslint-disable class-methods-use-this */
 export default class CardMover {
 	cardElement: HTMLElement | null;
+	buttonControl: ButtonPushControl;
 
 	constructor(cardElement: HTMLElement | null) {
 		this.cardElement = cardElement;
+		this.buttonControl = new ButtonPushControl();
 	}
 
 	moveUp(): void {
@@ -15,7 +16,7 @@ export default class CardMover {
 		if (currentCard !== null && previousCard !== null && previousCard.classList.contains("serial-card")) {
 			previousCard.before(currentCard);
 
-			ButtonPushControl.init();
+			this.buttonControl.buttonEnable();
 		}
 	}
 
@@ -26,7 +27,7 @@ export default class CardMover {
 		if (currentCard !== null && nextCard !== null && nextCard.classList.contains("serial-card")) {
 			nextCard.after(currentCard);
 
-			ButtonPushControl.init();
+			this.buttonControl.buttonEnable();
 		}
 	}
 }

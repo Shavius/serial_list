@@ -7,9 +7,11 @@ import ParseCard from "./ParseCard";
 
 export default class CreateFormCard {
 	pageBody: HTMLElement | null;
+	buttonControl: ButtonPushControl;
 
 	constructor() {
 		this.pageBody = document.querySelector("body");
+		this.buttonControl = new ButtonPushControl();
 	}
 
 	createForm(dataCardInfo: IDataCard | undefined = undefined): HTMLElement {
@@ -127,12 +129,12 @@ export default class CreateFormCard {
 							if (dataCardInfo !== undefined && cardElement !== null) {
 								parseCard.changeOneCard(cardElement);
 
-								ButtonPushControl.init();
+								this.buttonControl.buttonEnable();
 							} else {
 								parseCard.parseOneCard();
 								this.removeEmptyCard();
 
-								ButtonPushControl.init();
+								this.buttonControl.buttonEnable();
 							}
 						} else {
 							console.log("Серии не чесла и не равны 0");

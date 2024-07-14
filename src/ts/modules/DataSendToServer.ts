@@ -68,7 +68,9 @@ export default class DataSendToServer {
 
 			if (responseToServer) {
 				this.modal.removeModalToPage();
-				ButtonPushControl.buttonDisable();
+
+				const buttonControl = new ButtonPushControl();
+				buttonControl.buttonDisable();
 			} else {
 				this.modal.modalError(this.textError);
 			}

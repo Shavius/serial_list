@@ -1,9 +1,10 @@
-export default class ButtonPushControl {
-	static buttonPush = false;
-	static buttonName = "header__push-serial";
-	static buttonNameActive = "header__push-serial--active";
+/* eslint-disable class-methods-use-this */
 
-	static findButton(buttonName: string): HTMLElement | null {
+export default class ButtonPushControl {
+	buttonName = "header__push-serial";
+	buttonNameActive = "header__push-serial--active";
+
+	findButton(buttonName: string): HTMLElement | null {
 		const button: HTMLElement | null = document.querySelector(`.${buttonName}`);
 
 		if (button !== null) {
@@ -13,9 +14,8 @@ export default class ButtonPushControl {
 		return null;
 	}
 
-	static buttonEnable(): void {
-		this.buttonPush = true;
-		const button = ButtonPushControl.findButton(ButtonPushControl.buttonName);
+	buttonEnable(): void {
+		const button = this.findButton(this.buttonName);
 
 		if (button !== null) {
 			button.classList.remove(`${this.buttonName}`);
@@ -24,18 +24,13 @@ export default class ButtonPushControl {
 		}
 	}
 
-	static buttonDisable(): void {
-		this.buttonPush = false;
-		const button = ButtonPushControl.findButton(ButtonPushControl.buttonNameActive);
+	buttonDisable(): void {
+		const button = this.findButton(this.buttonNameActive);
 
 		if (button !== null) {
 			button.classList.remove(`${this.buttonNameActive}`);
 			button.classList.add(`${this.buttonName}`);
 			button.innerHTML = "----";
 		}
-	}
-
-	static init(): void {
-		ButtonPushControl.buttonEnable();
 	}
 }

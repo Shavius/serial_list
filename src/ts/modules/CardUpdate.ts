@@ -40,7 +40,8 @@ export default class CardUpdate {
 
 				currentSeria.innerHTML = `${currentSeriaNumber}`;
 
-				ButtonPushControl.init();
+				const buttonControl = new ButtonPushControl();
+				buttonControl.buttonEnable();
 
 				if (leftSeria !== null && allSeria !== null) {
 					const allSeriaNumber = Number(allSeria.innerHTML);

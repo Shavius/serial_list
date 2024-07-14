@@ -63,7 +63,8 @@ export default class CardDelete {
 							createFormCard.closeCard(body, deleteWindow);
 							this.addEmptyCard();
 
-							ButtonPushControl.init();
+							const buttonControl = new ButtonPushControl();
+							buttonControl.buttonEnable();
 						});
 
 						buttonNoDelete.addEventListener("click", () => {
