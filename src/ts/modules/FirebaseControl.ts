@@ -36,8 +36,8 @@ export default class FirebaseControl {
 		return idToken;
 	};
 
-	sendDataToDatabase = async (idToken: string, data: IDataCard[] | []): Promise<boolean> => {
-		const url = `https://shava-list-default-rtdb.firebaseio.com/user.json?auth=${idToken}`;
+	sendDataToDatabase = async (idToken: string, userName: string, data: IDataCard[] | []): Promise<boolean> => {
+		const url = `https://shava-list-default-rtdb.firebaseio.com/${userName}.json?auth=${idToken}`;
 
 		try {
 			const response = await fetch(url, {
@@ -59,8 +59,8 @@ export default class FirebaseControl {
 		}
 	};
 
-	getDataFromDatabase = async (idToken: string): Promise<IDataCard[] | null | []> => {
-		const url = `https://shava-list-default-rtdb.firebaseio.com/user.json?auth=${idToken}`;
+	getDataFromDatabase = async (idToken: string, userName: string): Promise<IDataCard[] | null | []> => {
+		const url = `https://shava-list-default-rtdb.firebaseio.com/${userName}.json?auth=${idToken}`;
 
 		try {
 			const response = await fetch(url, {

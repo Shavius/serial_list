@@ -23,12 +23,15 @@ export default class DataGetFromServer {
 		const token: string = await firebase.loginWithEmailPassword(userData.email, userData.password);
 
 		if (token !== "error") {
-			const cardData: [] | IDataCard[] | null = await firebase.getDataFromDatabase(token);
+			const userName = userData.email.split("@")[0];
+			const cardData: [] | IDataCard[] | null = await firebase.getDataFromDatabase(token, userName);
 
 			if (cardData !== null && cardData.length > 0) {
 				cardData.forEach((cardElement) => {
-					const parseCard = new ParseCard(cardElement);
-					parseCard.parseOneCard();
+					if (cardElement !== null) {
+						const parseCard = new ParseCard(cardElement);
+						parseCard.parseOneCard();
+					}
 				});
 
 				cardLoad?.remove();

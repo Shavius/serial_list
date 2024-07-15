@@ -65,7 +65,7 @@ export default class Authorization {
 				const userData: IUserData | null = this.getDataFromModal();
 
 				if (userData !== null && userData.email !== "" && userData.password !== "") {
-					this.complite(userData.email, userData.password);
+					this.complite(userData.email.toLocaleLowerCase(), userData.password.toLocaleLowerCase());
 				}
 			});
 		}

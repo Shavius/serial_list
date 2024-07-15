@@ -64,7 +64,8 @@ export default class DataSendToServer {
 		const token = await firebase.loginWithEmailPassword(userData.email, userData.password);
 
 		if (token !== "error") {
-			const responseToServer = await firebase.sendDataToDatabase(token, dataCard);
+			const userName = userData.email.split("@")[0];
+			const responseToServer = await firebase.sendDataToDatabase(token, userName, dataCard);
 
 			if (responseToServer) {
 				this.modal.removeModalToPage();
