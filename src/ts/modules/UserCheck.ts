@@ -10,11 +10,13 @@ export default class UserCheck {
 	dataSendToServer: DataSendToServer;
 	dataGetFromServer: DataGetFromServer;
 	cards: Cards;
+	headerHeight: HeaderHeight;
 
 	constructor() {
 		this.dataSendToServer = new DataSendToServer();
 		this.dataGetFromServer = new DataGetFromServer();
 		this.cards = new Cards();
+		this.headerHeight = new HeaderHeight();
 	}
 
 	addHeaderButton(): void {
@@ -50,6 +52,8 @@ export default class UserCheck {
 		this.changeButtonAuthorization();
 		this.addHeaderButton();
 		this.dataGetFromServer.init();
+
+		this.headerHeight.changeHeaderHeight();
 	}
 
 	userNo(): void {
@@ -58,12 +62,10 @@ export default class UserCheck {
 
 	init(): void {
 		const userData: IUserData | null = this.dataSendToServer.getUserData();
+		this.headerHeight.init();
 
 		if (userData !== null) {
 			this.userYes();
-
-			const headerHeight = new HeaderHeight();
-			headerHeight.init();
 		} else {
 			this.userNo();
 		}

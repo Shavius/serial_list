@@ -3,6 +3,7 @@
 export default class HeaderHeight {
 	header: HTMLElement | null;
 	wrapperBottom: HTMLElement | null;
+	static initEnable = false;
 
 	constructor() {
 		this.header = document.querySelector("header");
@@ -25,7 +26,11 @@ export default class HeaderHeight {
 	}
 
 	init(): void {
-		this.changeHeaderHeight();
-		this.resizeHeader();
+		if (HeaderHeight.initEnable === false) {
+			HeaderHeight.initEnable = true;
+
+			this.changeHeaderHeight();
+			this.resizeHeader();
+		}
 	}
 }
