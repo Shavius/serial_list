@@ -21,14 +21,12 @@ export default class CardUpdate {
 			const leftSeria: HTMLElement | null = this.currentCard.querySelector(this.nameLeftSeria);
 			const dateUpdate: HTMLElement | null = this.currentCard.querySelector(this.nameDateUpdate);
 
-			if (currentSeria !== null) {
+			if (currentSeria !== null && dateUpdate !== null) {
 				const currentSeriaString: string = currentSeria.innerHTML;
 				let currentSeriaNumber = Number(currentSeriaString);
 
-				if (dateUpdate !== null) {
-					const currentDate = new DateControl().getCurrentDate();
-					dateUpdate.innerHTML = `${currentDate}`;
-				}
+				const currentDate = new DateControl();
+				const buttonControl = new ButtonPushControl();
 
 				if (buttonParams === "up") {
 					currentSeriaNumber += 1;
@@ -38,23 +36,31 @@ export default class CardUpdate {
 					currentSeriaNumber -= 1;
 				}
 
-				currentSeria.innerHTML = `${currentSeriaNumber}`;
-
-				const buttonControl = new ButtonPushControl();
-				buttonControl.buttonEnable();
-
 				if (leftSeria !== null && allSeria !== null) {
 					const allSeriaNumber = Number(allSeria.innerHTML);
+					let leftSeriaNumber = Number(leftSeria.innerHTML);
 
-					const left = allSeriaNumber - currentSeriaNumber;
+					if (buttonParams === "up" && currentSeriaNumber <= allSeriaNumber) {
+						leftSeriaNumber -= 1;
+						currentSeria.innerHTML = `${currentSeriaNumber}`;
+						leftSeria.innerHTML = `${leftSeriaNumber}`;
 
-					if (left >= 0) {
-						leftSeria.innerHTML = `${left}`;
+						dateUpdate.innerHTML = `${currentDate.getCurrentDate()}`;
+						buttonControl.buttonEnable();
 					}
 
-					if (currentSeriaNumber > allSeriaNumber) {
-						currentSeria.innerHTML = `${allSeriaNumber}`;
+					if (buttonParams === "down" && leftSeriaNumber < allSeriaNumber) {
+						leftSeriaNumber += 1;
+						currentSeria.innerHTML = `${currentSeriaNumber}`;
+						leftSeria.innerHTML = `${leftSeriaNumber}`;
+
+						dateUpdate.innerHTML = `${currentDate.getCurrentDate()}`;
+						buttonControl.buttonEnable();
 					}
+				} else if (currentSeriaNumber > 0) {
+					currentSeria.innerHTML = `${currentSeriaNumber}`;
+					dateUpdate.innerHTML = `${currentDate.getCurrentDate()}`;
+					buttonControl.buttonEnable();
 				}
 			}
 		}
