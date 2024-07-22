@@ -1,0 +1,93 @@
+.modal {
+	position: relative;
+	top: 5px;
+	left: 0;
+	z-index: 500;
+	background: white;
+	border-radius: 5px;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+	max-width: $PageWidth;
+	padding: 5px;
+	margin: 0 auto;
+
+	&__title {
+		font-size: 20px;
+		margin: 10px 0;
+		text-align: center;
+
+		&--error {
+			color: red;
+		}
+	}
+
+	&__title-serial {
+		text-align: center;
+		font-size: 18px;
+		margin: 10px 0;
+	}
+
+	&__inputs {
+		margin: 10px;
+	}
+
+	&__loader {
+		border: 10px solid #f3f3f3;
+		border-top: 10px solid #3498db;
+		border-radius: 50%;
+		width: 40px;
+		height: 40px;
+		animation: spin 2s linear infinite;
+		margin: 0 auto;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	@keyframes spin {
+		0% {
+			transform: rotate(0deg);
+		}
+		100% {
+			transform: rotate(360deg);
+		}
+	}
+}
+
+.modal-inputs {
+	&__item-text {
+		margin-bottom: 5px;
+	}
+
+	&__item-input {
+		border: 1px solid black;
+		outline: none;
+		width: 100%;
+		padding: 2px;
+		margin-bottom: 5px;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+}
+
+.modal-buttons {
+	text-align: center;
+	margin-bottom: 10px;
+
+	&__item {
+		@include ButtonBG();
+		display: inline-block;
+		width: 100px;
+		padding: 5px 10px;
+		margin-right: 10px;
+
+		&:active {
+			@include ButtonClickBG();
+		}
+
+		&:last-child {
+			margin-right: 0;
+		}
+	}
+}

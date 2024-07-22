@@ -1,15 +1,54 @@
 .header {
-	border: 1px solid $secondary-color2;
+	position: fixed;
+	top: auto;
+	left: auto;
+	width: 100%;
+	max-width: $PageWidth;
+	border: 1px solid black;
+	border-radius: 5px;
+	background-color: $ColorBackgroundSigment;
+	padding: 10px 5px;
 
-	&__title {
-		border: 1px solid $secondary-color2;
-		font-size: 20px;
-		margin: 10px;
+	@media (max-width: 450px) {
+		border: none;
+		border-radius: 0;
+		box-shadow: black 2px 2px 4px;
 	}
 
-	&__content {
-		border: 1px solid $secondary-color2;
-		font-size: 20px;
-		margin: 5px;
+	&__title {
+		display: block;
+		text-align: center;
+		margin-bottom: 5px;
+		font-size: 1.2rem;
+	}
+
+	&__buttons {
+		display: flex;
+		justify-content: center;
+	}
+
+	&__button {
+		@include ButtonBG();
+		border-radius: 5px;
+		padding: 5px 0;
+		width: $ButtonWidthSize;
+		text-align: center;
+		margin-right: 10px;
+
+		&:active {
+			@include ButtonClickBG();
+		}
+
+		&:last-child {
+			margin-right: 0;
+		}
+	}
+
+	&__push-serial {
+		cursor: not-allowed;
+	}
+
+	&__push-serial--active {
+		background-color: green;
 	}
 }
