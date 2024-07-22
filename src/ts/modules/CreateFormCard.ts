@@ -16,8 +16,8 @@ export default class CreateFormCard {
 
 	createForm(dataCardInfo: IDataCard | undefined = undefined): HTMLElement {
 		let serialName = "Назва Серіала";
-		let currentSeria = "0";
-		let allSeria = "0";
+		let currentSeria = "";
+		let allSeria = "";
 		let cardImg = "";
 		let cardName = "Створення картки";
 		let createButton = "Створити";
@@ -38,13 +38,13 @@ export default class CreateFormCard {
 			<div class="modal__title">${cardName}</div>
 			<div class="modal__inputs modal-inputs">
 				<div class="modal-inputs__item-text">Додати назву</div>
-				<input id="inputCardName" class="modal-inputs__item-input" type="text" value="${serialName}" />
+				<input id="inputCardName" class="modal-inputs__item-input" type="text" placeholder="Назва Серіала" value="${serialName}" />
 				<div class="modal-inputs__item-text">Поточна серія</div>
-				<input id="inputCardCurrentSeria" class="modal-inputs__item-input" type="number" value="${currentSeria}" />
+				<input id="inputCardCurrentSeria" class="modal-inputs__item-input" type="number" placeholder="0" value="${currentSeria}" />
 				<div class="modal-inputs__item-text">Всього серій</div>
-				<input id="inputCardAllSeria" class="modal-inputs__item-input" type="number" value="${allSeria}" />
-				<div class="modal-inputs__item-text">Додати зображення</div>
-				<input id="inputCardImage" class="modal-inputs__item-input" type="text" value="${cardImg}" />
+				<input id="inputCardAllSeria" class="modal-inputs__item-input" type="number" placeholder="0" value="${allSeria}" />
+				<div class="modal-inputs__item-text">Додати зображення (URL)</div>
+				<input id="inputCardImage" class="modal-inputs__item-input" type="text" placeholder="Наприклад https://some-site.ua/img.jpeg" value="${cardImg}" />
 			</div>
 			<div class="modal-buttons">
 				<div class="modal-buttons__item modal-buttons__item-create">${createButton}</div>
