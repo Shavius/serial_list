@@ -13,7 +13,7 @@ export default class CreateFormCard {
 	}
 
 	createForm(dataCardInfo: IDataCard | undefined = undefined): HTMLElement {
-		let serialName = "Назва Серіала";
+		let serialName = "";
 		let currentSeria = "";
 		let allSeria = "";
 		let cardImg = "";
