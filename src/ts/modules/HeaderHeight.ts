@@ -1,5 +1,3 @@
-/* eslint-disable class-methods-use-this */
-
 export default class HeaderHeight {
 	header: HTMLElement | null;
 	wrapperBottom: HTMLElement | null;

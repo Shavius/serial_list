@@ -1,5 +1,3 @@
-/* eslint-disable class-methods-use-this */
-
 export default class ButtonPushControl {
 	buttonName = "header__push-serial";
 	buttonNameActive = "header__push-serial--active";

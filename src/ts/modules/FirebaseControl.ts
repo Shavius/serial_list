@@ -1,5 +1,3 @@
-/* eslint-disable class-methods-use-this */
-
 import IDataCard from "../interfaces/IDataCard";
 
 export default class FirebaseControl {

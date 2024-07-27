@@ -39,5 +39,6 @@ module.exports = {
 		"no-console": "off",
 		"func-names": "off",
 		"lines-between-class-members": "off",
+		"class-methods-use-this": "off",
 	},
 };

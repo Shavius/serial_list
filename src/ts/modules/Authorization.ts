@@ -1,5 +1,3 @@
-/* eslint-disable class-methods-use-this */
-
 import IUserData from "../interfaces/IUserData";
 import FirebaseControl from "./FirebaseControl";
 import ModalAuthorization from "./ModalAuthorization";
