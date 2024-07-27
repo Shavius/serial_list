@@ -62,18 +62,18 @@ export default class CreateFormCard {
 	changeText(): void {
 		const inputCardName: HTMLInputElement | null = document.querySelector("#inputCardName");
 		const changeText: HTMLElement | null = document.querySelector("#changeText");
-		let num = 0;
+		let switchOptins = false;
 
 		if (inputCardName !== null && changeText !== null) {
 			changeText.addEventListener("click", () => {
 				const inputText: string = inputCardName.value;
 
-				if (num) {
-					num = 0;
+				if (switchOptins) {
+					switchOptins = false;
 					inputCardName.value = `${inputText.toUpperCase()}`;
 					changeText.innerHTML = "AA";
 				} else {
-					num = 1;
+					switchOptins = true;
 					inputCardName.value = `${inputText.toLowerCase()}`;
 					changeText.innerHTML = "aa";
 				}
