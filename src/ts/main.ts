@@ -1,6 +1,6 @@
 import "../index.html";
 import "../404.html";
-import "../scss/style.scss";
+import "../scss/main.scss";
 import ControlButtons from "./modules/ControlButtons";
 import UserCheck from "./modules/UserCheck";
 
