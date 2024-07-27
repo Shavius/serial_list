@@ -38,7 +38,10 @@ export default class CreateFormCard {
 			<div class="modal__title">${cardName}</div>
 			<div class="modal__inputs modal-inputs">
 				<div class="modal-inputs__item-text">Додати назву</div>
-				<input id="inputCardName" class="modal-inputs__item-input" type="text" placeholder="Назва Серіала" value="${serialName}" />
+				<div class="modal-inputs-block">
+					<input id="inputCardName" class="modal-inputs__item-input" type="text" placeholder="Назва Серіала" value="${serialName}" />
+					<div id="changeText" class="modal-inputs-block__text-change">Aa</div>
+				</div>
 				<div class="modal-inputs__item-text">Поточна серія</div>
 				<input id="inputCardCurrentSeria" class="modal-inputs__item-input" type="number" placeholder="0" value="${currentSeria}" />
 				<div class="modal-inputs__item-text">Всього серій</div>
@@ -54,6 +57,28 @@ export default class CreateFormCard {
         `;
 
 		return modalOverlay;
+	}
+
+	changeText(): void {
+		const inputCardName: HTMLInputElement | null = document.querySelector("#inputCardName");
+		const changeText: HTMLElement | null = document.querySelector("#changeText");
+		let num = 0;
+
+		if (inputCardName !== null && changeText !== null) {
+			changeText.addEventListener("click", () => {
+				const inputText: string = inputCardName.value;
+
+				if (num) {
+					num = 0;
+					inputCardName.value = `${inputText.toUpperCase()}`;
+					changeText.innerHTML = "AA";
+				} else {
+					num = 1;
+					inputCardName.value = `${inputText.toLowerCase()}`;
+					changeText.innerHTML = "aa";
+				}
+			});
+		}
 	}
 
 	closeCard(body: HTMLElement | null, card: HTMLElement): void {
@@ -87,6 +112,7 @@ export default class CreateFormCard {
 			this.pageBody?.classList.add("body-lock");
 
 			this.pageBody?.append(card);
+			this.changeText();
 
 			const exit1 = card.querySelector(".modal-buttons__item-exit");
 
