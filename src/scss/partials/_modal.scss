@@ -71,6 +71,21 @@
 	}
 }
 
+.modal-inputs-block {
+	display: flex;
+
+	&__text-change {
+		display: inline-block;
+		border: 1px solid black;
+		margin-left: 5px;
+		padding: 2px 5px;
+		cursor: pointer;
+		user-select: none;
+		background-color: silver;
+		align-self: baseline;
+	}
+}
+
 .modal-buttons {
 	text-align: center;
 	margin-bottom: 10px;
