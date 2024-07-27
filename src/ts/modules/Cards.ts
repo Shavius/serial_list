@@ -1,5 +1,3 @@
-/* eslint-disable class-methods-use-this */
-
 export default class Cards {
 	createCardLoad(): HTMLElement {
 		const cardLoad: HTMLElement = document.createElement("div");

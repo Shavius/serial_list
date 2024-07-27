@@ -1,5 +1,3 @@
-/* eslint-disable class-methods-use-this */
-
 import type IDataCard from "../interfaces/IDataCard";
 import ButtonPushControl from "./ButtonPushControl";
 import DateControl from "./DateControl";

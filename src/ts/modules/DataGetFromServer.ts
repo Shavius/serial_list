@@ -1,5 +1,3 @@
-/* eslint-disable class-methods-use-this */
-
 import IDataCard from "../interfaces/IDataCard";
 import IUserData from "../interfaces/IUserData";
 import Cards from "./Cards";

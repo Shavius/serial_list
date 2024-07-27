@@ -1,4 +1,3 @@
-/* eslint-disable class-methods-use-this */
 export default class DateControl {
 	getCurrentDate(): string {
 		const currentDate = new Date();
