@@ -1,7 +1,8 @@
 import IDataCard from "../interfaces/IDataCard";
 
 export default class FirebaseControl {
-	apiKey = "AIzaSyAq45dRJ0bhYpvQr42e0PpBq2CnMxSlq54";
+	apiKey = process.env.API_KEY || "AIzaSyAq45dRJ0bhYpvQr42e0PpBq2CnMxSlq54";
+	url = process.env.URL || "https://shava-list-default-rtdb.firebaseio.com/";
 
 	loginWithEmailPassword = async (email: string, password: string): Promise<string> => {
 		const url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${this.apiKey}`;
@@ -35,7 +36,7 @@ export default class FirebaseControl {
 	};
 
 	sendDataToDatabase = async (idToken: string, userName: string, data: IDataCard[] | []): Promise<boolean> => {
-		const url = `https://shava-list-default-rtdb.firebaseio.com/${userName}.json?auth=${idToken}`;
+		const url = `${this.url}${userName}.json?auth=${idToken}`;
 
 		try {
 			const response = await fetch(url, {
@@ -58,7 +59,7 @@ export default class FirebaseControl {
 	};
 
 	getDataFromDatabase = async (idToken: string, userName: string): Promise<IDataCard[] | null | []> => {
-		const url = `https://shava-list-default-rtdb.firebaseio.com/${userName}.json?auth=${idToken}`;
+		const url = `${this.url}${userName}.json?auth=${idToken}`;
 
 		try {
 			const response = await fetch(url, {
