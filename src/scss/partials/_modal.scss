@@ -84,6 +84,22 @@
 		background-color: silver;
 		align-self: baseline;
 	}
+
+	&__delete-img {
+		display: inline-block;
+		border: 1px solid black;
+		margin-left: 5px;
+		padding: 2px 5px;
+		cursor: pointer;
+		user-select: none;
+		background-color: silver;
+		align-self: baseline;
+		transition: background-color 0.2s;
+
+		&:active {
+			@include ButtonClickBG();
+		}
+	}
 }
 
 .modal-buttons {
