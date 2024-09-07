@@ -45,7 +45,10 @@ export default class CreateFormCard {
 				<div class="modal-inputs__item-text">Всього серій</div>
 				<input id="inputCardAllSeria" class="modal-inputs__item-input" type="number" placeholder="0" value="${allSeria}" />
 				<div class="modal-inputs__item-text">Додати зображення (URL)</div>
-				<input id="inputCardImage" class="modal-inputs__item-input" type="text" placeholder="Наприклад https://some-site.ua/img.jpeg" value="${cardImg}" />
+				<div class="modal-inputs-block">
+					<input id="inputCardImage" class="modal-inputs__item-input" type="text" placeholder="Наприклад https://some-site.ua/img.jpeg" value="${cardImg}" />
+					<div id="deleteImg" class="modal-inputs-block__delete-img">Видалити</div>
+				</div>
 			</div>
 			<div class="modal-buttons">
 				<div class="modal-buttons__item modal-buttons__item-create">${createButton}</div>
@@ -75,6 +78,17 @@ export default class CreateFormCard {
 					inputCardName.value = `${inputText.toLowerCase()}`;
 					changeText.innerHTML = "aa";
 				}
+			});
+		}
+	}
+
+	deleteImg(): void {
+		const inputCardImg: HTMLInputElement | null = document.querySelector("#inputCardImage");
+		const buttonDeleteImg: HTMLElement | null = document.querySelector("#deleteImg");
+
+		if (inputCardImg !== null && buttonDeleteImg !== null) {
+			buttonDeleteImg.addEventListener("click", () => {
+				inputCardImg.value = "";
 			});
 		}
 	}
@@ -111,6 +125,7 @@ export default class CreateFormCard {
 
 			this.pageBody?.append(card);
 			this.changeText();
+			this.deleteImg();
 
 			const exit1 = card.querySelector(".modal-buttons__item-exit");
 
