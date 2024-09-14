@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import type IDataCard from "../interfaces/IDataCard";
+import ILinkData from "../interfaces/ILinkData";
 import CreateFormCard from "./CreateFormCard";
 
 export default class CardChange {
@@ -8,6 +9,32 @@ export default class CardChange {
 
 	constructor(cardElement: HTMLElement | null) {
 		this.cardElement = cardElement;
+	}
+
+	getDataLinks(): ILinkData[] | null {
+		if (this.cardElement !== null) {
+			const cardLinksList = this.cardElement.querySelectorAll<HTMLAnchorElement>(
+				".card-links__item:not(.card-links__item--default)",
+			);
+
+			if (cardLinksList !== null && cardLinksList.length > 0) {
+				const linkList = [...cardLinksList];
+				const linkData: ILinkData[] = [];
+
+				linkList.forEach((link) => {
+					const linkItem = {
+						name: `${link.innerHTML}`,
+						url: `${link.href}`,
+					};
+
+					linkData.push(linkItem);
+				});
+
+				return linkData;
+			}
+		}
+
+		return null;
 	}
 
 	getDataCard(): IDataCard | undefined {
@@ -20,7 +47,7 @@ export default class CardChange {
 				cardImgString = cardImg.src;
 			}
 
-			const cardInfo = {
+			const cardInfo: IDataCard = {
 				serialName: card.querySelector(".serial-card__title")?.innerHTML || "No Name",
 				currentSeria: card.querySelector(".serial-info__number-current span")?.innerHTML || "0",
 				allSeria: card.querySelector(".serial-info__number-all span")?.innerHTML || "0",
@@ -28,6 +55,7 @@ export default class CardChange {
 				cardImg: cardImgString,
 				createDate: card.querySelector(".card-date__item-create span")?.innerHTML || "",
 				updateDate: card.querySelector(".card-date__item-update span")?.innerHTML || "",
+				serialLinks: this.getDataLinks(),
 			};
 
 			return cardInfo;

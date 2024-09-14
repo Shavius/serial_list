@@ -47,6 +47,14 @@ export default class ControlButtons {
 			this.mainContentElement.addEventListener("click", (event) => {
 				const pageElement = event.target as HTMLElement;
 
+				if (pageElement.classList.contains("links-button")) {
+					const clickedButton = event.target as HTMLElement;
+					const cardElement = clickedButton.closest<HTMLElement>(".serial-card");
+					const cardLinks = cardElement?.querySelector(".card-links");
+					clickedButton?.classList.toggle("links-button--color");
+					cardLinks?.classList.toggle("card-links--hidden");
+				}
+
 				if (pageElement.classList.contains("card-buttons__item-up")) {
 					const clickedButton = event.target as HTMLElement;
 					const cardElement = clickedButton.closest<HTMLElement>(".serial-card");
