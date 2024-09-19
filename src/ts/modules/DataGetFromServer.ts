@@ -5,6 +5,7 @@ import DataSendToServer from "./DataSendToServer";
 import FirebaseControl from "./FirebaseControl";
 import Modal from "./Modal";
 import ParseCard from "./ParseCard";
+import ScrollingAfterReboot from "./ScrollingAfterReboot";
 
 export default class DataGetFromServer {
 	modal: Modal;
@@ -33,6 +34,9 @@ export default class DataGetFromServer {
 				});
 
 				cardLoad?.remove();
+
+				const scrollingAfterReboot = new ScrollingAfterReboot();
+				scrollingAfterReboot.restoreScrollPosition();
 			} else {
 				this.cards.addCard(this.cards.createEmptyCard());
 			}
