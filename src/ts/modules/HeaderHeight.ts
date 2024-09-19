@@ -1,5 +1,3 @@
-/* eslint-disable class-methods-use-this */
-
 export default class HeaderHeight {
 	header: HTMLElement | null;
 	wrapperBottom: HTMLElement | null;
@@ -12,10 +10,9 @@ export default class HeaderHeight {
 
 	changeHeaderHeight(): void {
 		if (this.header !== null && this.wrapperBottom !== null) {
-			const headerHeight = window.getComputedStyle(this.header).height;
-			const headerHeightNumber = parseInt(headerHeight.replace("px", ""), 10);
+			const headerHeight = this.header.offsetHeight;
 
-			this.wrapperBottom.style.marginTop = `${headerHeightNumber + 10}px`;
+			this.wrapperBottom.style.marginTop = `${headerHeight + 10}px`;
 		}
 	}
 

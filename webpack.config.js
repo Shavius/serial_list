@@ -1,6 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const Dotenv = require("dotenv-webpack");
 
 let mode = "development";
 let devtool = "source-map";
@@ -14,11 +15,11 @@ module.exports = {
 	mode: mode,
 	devtool: devtool,
 
-	entry: path.resolve(__dirname, "src", "ts/script.ts"),
+	entry: path.resolve(__dirname, "src", "ts/main.ts"),
 	output: {
 		path: path.resolve(__dirname, "dist"),
 		clean: true,
-		filename: "js/script.js",
+		filename: "js/main.js",
 	},
 
 	plugins: [
@@ -31,7 +32,11 @@ module.exports = {
 			template: path.resolve(__dirname, "src", "404.html"),
 		}),
 		new MiniCssExtractPlugin({
-			filename: "style/style.css",
+			filename: "style/main.css",
+		}),
+		new Dotenv({
+			path: process.env.NODE_ENV === "production" ? ".env.production" : ".env",
+			silent: true,
 		}),
 	],
 

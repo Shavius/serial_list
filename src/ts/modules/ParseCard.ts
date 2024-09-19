@@ -1,5 +1,3 @@
-/* eslint-disable class-methods-use-this */
-
 import type IDataCard from "../interfaces/IDataCard";
 
 export default class ParseCard {
@@ -9,6 +7,17 @@ export default class ParseCard {
 	constructor(dataCard: IDataCard) {
 		this.pageMainContent = document.querySelector(".main__content");
 		this.dataCard = dataCard;
+	}
+
+	createLink(name: string, url: string): HTMLAnchorElement {
+		const cardLink = document.createElement("a");
+		cardLink.classList.add("card-links__item");
+
+		cardLink.textContent = name;
+		cardLink.href = url;
+		cardLink.target = "target";
+
+		return cardLink;
 	}
 
 	createCard(): HTMLElement {
@@ -26,6 +35,7 @@ export default class ParseCard {
 
 		card.innerHTML = `
         <div class="serial-card__top-buttons top-buttons">
+			<div class="top-buttons__item links-button">Посилання</div>
 			<div class="top-buttons__item serial-card__button-up">Вгору</div>
 			<div class="top-buttons__item serial-card__button-down">Вниз</div>
 			<div class="top-buttons__item serial-card__button-change">Змінити</div>
@@ -46,7 +56,11 @@ export default class ParseCard {
             <div class="card-buttons__item card-buttons__item-up">+</div>
             <div class="card-buttons__item card-buttons__item-down">-</div>
         </div>
-        <div class="card-date">
+		<div class="card-links card-links--hidden">
+			<div class="card-links__title">Посилання</div>
+			<div class="card-links__item card-links__item--default">Немає посилань</div>
+		</div>
+		 <div class="card-date">
             <div class="card-date__item card-date__item-create">Створенно: <span>${this.dataCard.createDate}</span></div>
             <div class="card-date__item card-date__item-update">Оновленно: <span>${this.dataCard.updateDate}</span></div>
         </div>
@@ -78,6 +92,25 @@ export default class ParseCard {
 
 				serialInfoElement.append(allSeriaElement);
 				serialInfoElement.append(leftSeriaElement);
+			}
+		}
+
+		if (
+			this.dataCard?.serialLinks &&
+			Array.isArray(this.dataCard?.serialLinks) &&
+			this.dataCard?.serialLinks.length > 0
+		) {
+			const cardLinks = card.querySelector(".card-links");
+			const linkList = this.dataCard.serialLinks;
+
+			if (cardLinks !== null && linkList.length > 0) {
+				const cardLinksDefault = card.querySelector(".card-links__item--default");
+				cardLinksDefault?.remove();
+
+				linkList.forEach((link) => {
+					const linkItem = this.createLink(link.name, link.url);
+					cardLinks.append(linkItem);
+				});
 			}
 		}
 

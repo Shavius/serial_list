@@ -1,4 +1,3 @@
-/* eslint-disable class-methods-use-this */
 import ButtonPushControl from "./ButtonPushControl";
 import Cards from "./Cards";
 import CreateFormCard from "./CreateFormCard";
