@@ -78,13 +78,13 @@
 
 .top-buttons {
 	text-align: right;
-	margin-bottom: 5px;
 
 	&__item {
 		@include ButtonBG();
 		display: inline-block;
 		border-radius: 5px;
 		padding: 2px 4px;
+		margin-bottom: 5px;
 
 		&:active {
 			@include ButtonClickBG();
