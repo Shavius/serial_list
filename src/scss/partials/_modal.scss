@@ -6,11 +6,14 @@
 	background: white;
 	border-radius: 5px;
 	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-	overflow-y: auto;
 	max-width: $PageWidth;
 	max-height: 100%;
 	padding: 5px;
 	margin: 0 auto;
+
+	&-scroll {
+		overflow-y: auto;
+	}
 
 	&__title {
 		font-size: 20px;
@@ -127,7 +130,7 @@
 
 .modal-links-inputs {
 	text-align: center;
-	margin-bottom: 10px;
+	margin: 10px;
 
 	&__button {
 		@include ButtonBG(grey);

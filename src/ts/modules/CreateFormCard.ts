@@ -108,7 +108,7 @@ export default class CreateFormCard {
 		const modalOverlay = document.createElement("div");
 		modalOverlay.classList.add("modal-overlay");
 		modalOverlay.innerHTML = `
-		<div class="modal">
+		<div class="modal modal-scroll">
 			<div class="modal__title">${cardName}</div>
 			<div class="modal__inputs modal-inputs">
 				<div class="modal-inputs__item-text">Додати назву</div>
