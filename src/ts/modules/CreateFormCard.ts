@@ -25,9 +25,60 @@ export default class CreateFormCard {
 		<input class="modal-link-inputs__site-name-input" type="text" placeholder="Назва сайту" value="${linkName}" />
 		<div class="modal-link-inputs__site-url modal-link-name">Адреса сайту URL</div>
 		<input class="modal-link-inputs__site-url-input" type="text" placeholder="https://some-site.ua" value="${linkUrl}" />
+		<div class="modal-link-inputs__website-address-field">
+			<div class="modal-link-inputs__website-address-button">Додати ім'я сайту</div>
+		</div>
 		`;
 
 		return modalLinkInputs;
+	}
+
+	addSiteNameToInputValue(inputName: HTMLInputElement, inputAddress: HTMLInputElement): void {
+		if (inputName && inputAddress && inputAddress.value) {
+			const pageInputName = inputName;
+			let addressName = "";
+
+			try {
+				const parsedUrl = new URL(inputAddress.value);
+				let { hostname } = parsedUrl;
+
+				if (hostname.startsWith("www.")) {
+					hostname = hostname.slice(4);
+				}
+
+				const domainNameCapitalized = hostname.charAt(0).toUpperCase() + hostname.slice(1);
+				addressName = domainNameCapitalized;
+
+				pageInputName.value = "";
+				pageInputName.value = addressName;
+			} catch {
+				pageInputName.value = "Немає адреси сайту";
+			}
+		}
+	}
+
+	addSiteName(): void {
+		const modalLinksInputs = document.querySelector(".modal-links-inputs");
+
+		if (modalLinksInputs) {
+			modalLinksInputs.addEventListener("click", (event) => {
+				const element = event.target as HTMLElement;
+
+				if (element.classList.contains("modal-link-inputs__website-address-button")) {
+					const parentElement = element.closest<HTMLElement>(".modal-link-inputs");
+					const inputSiteName = parentElement?.querySelector<HTMLInputElement>(
+						".modal-link-inputs__site-name-input",
+					);
+					const inputSiteAddress = parentElement?.querySelector<HTMLInputElement>(
+						".modal-link-inputs__site-url-input",
+					);
+
+					if (inputSiteName && inputSiteAddress) {
+						this.addSiteNameToInputValue(inputSiteName, inputSiteAddress);
+					}
+				}
+			});
+		}
 	}
 
 	addSiteLink(): void {
@@ -207,6 +258,7 @@ export default class CreateFormCard {
 			this.changeText();
 			this.deleteImg();
 			this.addSiteLink();
+			this.addSiteName();
 
 			const linkData = dataCardInfo?.serialLinks;
 

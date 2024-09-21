@@ -160,6 +160,26 @@
 			margin-bottom: 0;
 		}
 	}
+
+	&__website-address-field {
+		text-align: center;
+	}
+
+	&__website-address-button {
+		display: inline-block;
+		border: 1px solid black;
+		border-radius: 5px;
+		user-select: none;
+		cursor: pointer;
+		padding: 5px 10px;
+		background-color: silver;
+		transition: background-color 0.2s;
+
+		&:active {
+			background-color: grey;
+			transition: background-color 0.2s;
+		}
+	}
 }
 
 .modal-link-name {
