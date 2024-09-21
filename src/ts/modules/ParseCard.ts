@@ -1,4 +1,5 @@
 import type IDataCard from "../interfaces/IDataCard";
+import DateControl from "./DateControl";
 
 export default class ParseCard {
 	pageMainContent: HTMLElement | null;
@@ -29,6 +30,9 @@ export default class ParseCard {
 		const img = this.dataCard.cardImg;
 		const currentSeriaNumber = Number(this.dataCard.currentSeria);
 		const allSeriaNumber = Number(this.dataCard.allSeria);
+
+		const dateControl = new DateControl();
+		const pastDate = dateControl.getDaysPassed(this.dataCard.updateDate);
 
 		const card = document.createElement("div");
 		card.classList.add("serial-card");
@@ -64,6 +68,9 @@ export default class ParseCard {
             <div class="card-date__item card-date__item-create">Створенно: <span>${this.dataCard.createDate}</span></div>
             <div class="card-date__item card-date__item-update">Оновленно: <span>${this.dataCard.updateDate}</span></div>
         </div>
+		<div class="days-passed">
+			<div class="days-passed__item">Останнє оновлення <span>${pastDate}</span> днів</div>
+		</div>
         `;
 
 		if (img.length > 0) {
