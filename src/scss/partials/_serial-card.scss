@@ -91,3 +91,15 @@
 		}
 	}
 }
+
+.days-passed {
+	text-align: center;
+
+	@media (max-width: 505px) {
+		margin-top: 10px;
+	}
+
+	&__item {
+		font-size: 12px;
+	}
+}
