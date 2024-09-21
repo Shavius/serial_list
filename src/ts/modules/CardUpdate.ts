@@ -9,6 +9,7 @@ export default class CardUpdate {
 	nameAllSeria = ".serial-info__number-all span";
 	nameLeftSeria = ".serial-info__number-left span";
 	nameDateUpdate = ".card-date__item-update span";
+	nameDatePasedPage = ".days-passed__item span";
 
 	constructor(currentCard: HTMLElement | null) {
 		this.currentCard = currentCard;
@@ -20,12 +21,15 @@ export default class CardUpdate {
 			const allSeria: HTMLElement | null = this.currentCard.querySelector(this.nameAllSeria);
 			const leftSeria: HTMLElement | null = this.currentCard.querySelector(this.nameLeftSeria);
 			const dateUpdate: HTMLElement | null = this.currentCard.querySelector(this.nameDateUpdate);
+			const datePasedPage: HTMLElement | null = this.currentCard.querySelector(this.nameDatePasedPage);
 
-			if (currentSeria !== null && dateUpdate !== null) {
+			if (currentSeria !== null && dateUpdate !== null && datePasedPage !== null) {
 				const currentSeriaString: string = currentSeria.innerHTML;
 				let currentSeriaNumber = Number(currentSeriaString);
 
-				const currentDate = new DateControl();
+				const dateControl = new DateControl();
+				const currentDate = dateControl.getCurrentDate();
+				const pastDate = dateControl.getDaysPassed(currentDate);
 				const buttonControl = new ButtonPushControl();
 
 				if (buttonParams === "up") {
@@ -45,7 +49,8 @@ export default class CardUpdate {
 						currentSeria.innerHTML = `${currentSeriaNumber}`;
 						leftSeria.innerHTML = `${leftSeriaNumber}`;
 
-						dateUpdate.innerHTML = `${currentDate.getCurrentDate()}`;
+						dateUpdate.innerHTML = `${currentDate}`;
+						datePasedPage.innerHTML = `${pastDate}`;
 						buttonControl.buttonEnable();
 					}
 
@@ -54,12 +59,14 @@ export default class CardUpdate {
 						currentSeria.innerHTML = `${currentSeriaNumber}`;
 						leftSeria.innerHTML = `${leftSeriaNumber}`;
 
-						dateUpdate.innerHTML = `${currentDate.getCurrentDate()}`;
+						dateUpdate.innerHTML = `${currentDate}`;
+						datePasedPage.innerHTML = `${pastDate}`;
 						buttonControl.buttonEnable();
 					}
 				} else if (currentSeriaNumber > 0) {
 					currentSeria.innerHTML = `${currentSeriaNumber}`;
-					dateUpdate.innerHTML = `${currentDate.getCurrentDate()}`;
+					dateUpdate.innerHTML = `${currentDate}`;
+					datePasedPage.innerHTML = `${pastDate}`;
 					buttonControl.buttonEnable();
 				}
 			}
