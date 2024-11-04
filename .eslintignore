@@ -1,4 +1,5 @@
 dist
+coverage
 webpack.config.js
 package-lock.json
 .eslintrc.js
