@@ -1,0 +1,109 @@
+name: Main-LTBD
+
+on:
+    push:
+        paths:
+            - ".github/workflows/*.yml"
+            - "src/**"
+        branches: ["main"]
+    pull_request:
+        paths:
+            - ".github/workflows/*.yml"
+            - "src/**"
+        branches: ["main"]
+
+env:
+    API_KEY: ${{ secrets.API_KEY }}
+    DATABASE_URL: ${{ secrets.DATABASE_URL }}
+
+permissions:
+    checks: write
+    contents: read
+    pull-requests: write
+
+jobs:
+    MainLintTestBuild:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Get repository code
+              uses: actions/checkout@v4
+
+            - name: Cache
+              uses: actions/cache@v4
+              with:
+                  path: ~/.npm
+                  key: node_modules-${{ hashFiles('**/package-lock.json') }}
+
+            - name: Install Package
+              run: npm ci
+
+            - name: Start Lint
+              run: npm run all
+
+            - name: Start Test
+              run: npm run test
+
+            - name: Start Build
+              run: npm run build
+
+    FireBase-Pre-Deploy:
+        environment: FireBase-Pre-Deploy
+        env:
+            API_KEY: ${{ secrets.API_KEY }}
+            DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        needs: [MainLintTestBuild]
+        if: github.event_name == 'pull_request' && vars.DEPLOY
+        runs-on: ubuntu-latest
+        steps:
+            - name: Get repository code
+              uses: actions/checkout@v4
+
+            - name: Cache
+              uses: actions/cache@v4
+              with:
+                  path: ~/.npm
+                  key: node_modules-${{ hashFiles('**/package-lock.json') }}
+
+            - name: Install Package
+              run: npm ci
+
+            - name: Start Build
+              run: npm run build
+
+            - name: FireBase to Pre-Deploy
+              uses: FirebaseExtended/action-hosting-deploy@v0
+              with:
+                  repoToken: ${{ secrets.GITHUB_TOKEN }}
+                  firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_SHAVA_LIST }}
+                  projectId: shava-list
+                  expires: 1d
+                  channelId: Pre-Deploy
+
+    FireBase-Deploy:
+        environment: FireBase-Deploy
+        needs: [MainLintTestBuild]
+        if: github.event_name == 'push' && vars.DEPLOY
+        runs-on: ubuntu-latest
+        steps:
+            - name: Get repository code
+              uses: actions/checkout@v4
+
+            - name: Cache
+              uses: actions/cache@v4
+              with:
+                  path: ~/.npm
+                  key: node_modules-${{ hashFiles('**/package-lock.json') }}
+
+            - name: Install Package
+              run: npm ci
+
+            - name: Start Build
+              run: npm run build
+
+            - name: FireBase to Deploy
+              uses: FirebaseExtended/action-hosting-deploy@v0
+              with:
+                  repoToken: ${{ secrets.GITHUB_TOKEN }}
+                  firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_SHAVA_LIST }}
+                  channelId: live
+                  projectId: shava-list

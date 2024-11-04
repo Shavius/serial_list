@@ -1,15 +1,23 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const Dotenv = require("dotenv-webpack");
+const DotenvWebpack = require("dotenv-webpack");
 
 let mode = "development";
 let devtool = "source-map";
+let envPath = ".env.production";
 
 if (process.env.NODE_ENV === "production") {
 	mode = "production";
 	devtool = false;
 }
+
+if (process.env.ENV_PATH === "develop") {
+	envPath = ".env.develop";
+}
+
+console.log("Mode:", mode);
+console.log("Env-Path:", envPath);
 
 module.exports = {
 	mode: mode,
@@ -34,9 +42,9 @@ module.exports = {
 		new MiniCssExtractPlugin({
 			filename: "style/main.css",
 		}),
-		new Dotenv({
-			path: process.env.NODE_ENV === "production" ? ".env.production" : ".env",
-			silent: true,
+		new DotenvWebpack({
+			path: envPath,
+			systemvars: true,
 		}),
 	],
 

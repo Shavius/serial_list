@@ -1,8 +1,8 @@
 import IDataCard from "../interfaces/IDataCard";
 
 export default class FirebaseControl {
-	apiKey = process.env.API_KEY || "AIzaSyAq45dRJ0bhYpvQr42e0PpBq2CnMxSlq54";
-	url = process.env.URL || "https://shava-list-default-rtdb.firebaseio.com/";
+	apiKey = process.env.API_KEY || "";
+	url = process.env.DATABASE_URL || "";
 
 	loginWithEmailPassword = async (email: string, password: string): Promise<string> => {
 		const url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${this.apiKey}`;
