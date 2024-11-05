@@ -1,4 +1,6 @@
 /node_modules/
 /dist/
+/coverage/
 /.firebase/
-.env
+.env.develop
+.env.production
