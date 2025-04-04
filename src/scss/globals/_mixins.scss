@@ -1,3 +1,5 @@
+@use "../globals/variables" as *;
+
 @mixin ButtonBG($bgColor: silver) {
 	border: 1px solid black;
 	user-select: none;

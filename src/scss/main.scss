@@ -1,15 +1,13 @@
-@import "globals/normalize.scss";
-@import "globals/fonts";
-@import "globals/variables";
-@import "globals/mixins";
-@import "globals/main";
+@forward "globals/normalize.scss";
+@forward "globals/fonts";
+@forward "globals/main";
 
-@import "partials/header";
-@import "partials/main";
-@import "partials/serial-card";
-@import "partials/card-links";
-@import "partials/modal-overlay";
-@import "partials/modal";
-@import "partials/modal-authorization";
-@import "partials/card-info";
-@import "partials/404";
+@forward "partials/header";
+@forward "partials/main";
+@forward "partials/serial-card";
+@forward "partials/card-links";
+@forward "partials/modal-overlay";
+@forward "partials/modal";
+@forward "partials/modal-authorization";
+@forward "partials/card-info";
+@forward "partials/404";

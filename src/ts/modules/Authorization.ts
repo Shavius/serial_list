@@ -67,5 +67,18 @@ export default class Authorization {
 				}
 			});
 		}
+
+		const buttonShowPassword: HTMLElement | null = document.querySelector(".modal-buttons__show-password");
+		const userPasswordText: HTMLInputElement | null = document.querySelector(".modal-authorization__password");
+		if (buttonShowPassword !== null && userPasswordText !== null) {
+			buttonShowPassword.addEventListener("click", (e) => {
+				e.preventDefault();
+				if (userPasswordText.type === "password") {
+					userPasswordText.type = "text";
+				} else {
+					userPasswordText.type = "password";
+				}
+			});
+		}
 	}
 }

@@ -1,3 +1,6 @@
+@use "../globals/variables" as *;
+@use "../globals/mixins" as *;
+
 .modal {
 	position: relative;
 	top: 5px;
@@ -117,6 +120,20 @@
 		width: 100px;
 		padding: 5px 10px;
 		margin-right: 10px;
+
+		&:active {
+			@include ButtonClickBG();
+		}
+
+		&:last-child {
+			margin-right: 0;
+		}
+	}
+
+	&__show-password {
+		@include ButtonBG();
+		display: inline-block;
+		padding: 5px 10px;
 
 		&:active {
 			@include ButtonClickBG();
