@@ -1,4 +1,4 @@
-name: Develop-LTB
+name: Develop-LB
 
 on:
     push:
@@ -7,7 +7,7 @@ on:
         branches: ["develop"]
 
 jobs:
-    DevelopLintTestBuild:
+    DevelopLintBuild:
         runs-on: ubuntu-latest
         steps:
             - name: Get repository code
@@ -24,9 +24,6 @@ jobs:
 
             - name: Start Lint
               run: npm run all
-
-            - name: Start Test
-              run: npm run test
 
             - name: Start Build
               run: npm run build

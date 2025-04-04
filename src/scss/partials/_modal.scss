@@ -1,3 +1,6 @@
+@use "../globals/variables" as *;
+@use "../globals/mixins" as *;
+
 .modal {
 	position: relative;
 	top: 5px;
