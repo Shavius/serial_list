@@ -129,6 +129,20 @@
 			margin-right: 0;
 		}
 	}
+
+	&__show-password {
+		@include ButtonBG();
+		display: inline-block;
+		padding: 5px 10px;
+
+		&:active {
+			@include ButtonClickBG();
+		}
+
+		&:last-child {
+			margin-right: 0;
+		}
+	}
 }
 
 .modal-links-inputs {
