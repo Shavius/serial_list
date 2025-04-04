@@ -39,7 +39,7 @@ export default class ParseCard {
 
 		card.innerHTML = `
         <div class="serial-card__top-buttons top-buttons">
-			<div class="top-buttons__item links-button">Посилання</div>
+			<div class="top-buttons__item links-button">Посилання: <span>0</span></div>
 			<div class="top-buttons__item serial-card__button-up">Вгору</div>
 			<div class="top-buttons__item serial-card__button-down">Вниз</div>
 			<div class="top-buttons__item serial-card__button-change">Змінити</div>
@@ -118,6 +118,11 @@ export default class ParseCard {
 					const linkItem = this.createLink(link.name, link.url);
 					cardLinks.append(linkItem);
 				});
+
+				const buttonLink = card.querySelector(".links-button span");
+				if (buttonLink !== null) {
+					buttonLink.innerHTML = `${linkList.length}`;
+				}
 			}
 		}
 
