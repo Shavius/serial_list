@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
-/* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import type IDataCard from "../interfaces/IDataCard";
 import ILinkData from "../interfaces/ILinkData";
 import CreateFormCard from "./CreateFormCard";
