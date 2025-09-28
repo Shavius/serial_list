@@ -164,7 +164,7 @@ export default class CreateFormCard {
 			<div class="modal__inputs modal-inputs">
 				<div class="modal-inputs__item-text">Додати назву</div>
 				<div class="modal-inputs-block">
-					<input id="inputCardName" class="modal-inputs__item-input" type="text" placeholder="Назва Серіала" value="${serialName}" />
+					<input id="inputCardName" class="modal-inputs__item-input" type="text" autocomplete="off" placeholder="Назва Серіала" value="${serialName}" />
 					<div id="changeText" class="modal-inputs-block__text-change">Aa</div>
 				</div>
 				<div class="modal-inputs__item-text">Поточна серія</div>
@@ -173,7 +173,7 @@ export default class CreateFormCard {
 				<input id="inputCardAllSeria" class="modal-inputs__item-input" type="number" placeholder="0" value="${allSeria}" />
 				<div class="modal-inputs__item-text">Додати зображення (URL)</div>
 				<div class="modal-inputs-block">
-					<input id="inputCardImage" class="modal-inputs__item-input" type="text" placeholder="Наприклад https://some-site.ua/img.jpeg" value="${cardImg}" />
+					<input id="inputCardImage" class="modal-inputs__item-input" type="text" autocomplete="off" placeholder="Наприклад https://some-site.ua/img.jpeg" value="${cardImg}" />
 					<div id="deleteImg" class="modal-inputs-block__delete-img">Видалити</div>
 				</div>
 			</div>
